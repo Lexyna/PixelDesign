@@ -35,8 +35,8 @@ public class ApplicationStage {
         appStage.setTitle("PixelDesign");
         appStage.setResizable(true);
 
-        appStage.setMinHeight(400);
-        appStage.setMinWidth(700);
+        appStage.setMinHeight(420);
+        appStage.setMinWidth(720);
 
         appStage.show();
     }
