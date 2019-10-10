@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.stages;
-import com.lexyn.pixeldesign.render.RenderCanvas;
+import com.lexyn.pixeldesign.render.Renderer;
+import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,11 +38,11 @@ public class MainStage {
         appStage.setResizable(true);
 
         mainStage.widthProperty().addListener((obs, oldValue, newValue) -> {
-            RenderCanvas.getInstance().drawBackground();
+            Renderer.getInstance().resize();
         });
 
         mainStage.heightProperty().addListener((obs, oldValue, newValue) -> {
-            RenderCanvas.getInstance().drawBackground();
+            Renderer.getInstance().resize();
         });
 
         appStage.setMinHeight(420);

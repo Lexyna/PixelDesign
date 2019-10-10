@@ -1,6 +1,7 @@
 package com.lexyn.pixeldesign.controller;
 
-import com.lexyn.pixeldesign.render.RenderCanvas;
+import com.lexyn.pixeldesign.render.PixelRenderer;
+import com.lexyn.pixeldesign.render.Renderer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -38,8 +39,8 @@ public class MainController implements Initializable {
         canvas.widthProperty().bind(canvas_frame.widthProperty());
         canvas.heightProperty().bind(canvas_frame.heightProperty());
 
-        RenderCanvas.getInstance(canvas);
-
+        Renderer.getInstance().setCanvas(canvas);
+        PixelRenderer.getInstance().setCanvas(canvas);
     }
 
 
