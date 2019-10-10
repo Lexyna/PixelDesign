@@ -1,6 +1,6 @@
 package com.lexyn.pixeldesign.launch;
 
-import com.lexyn.pixeldesign.stages.ApplicationStage;
+import com.lexyn.pixeldesign.stages.MainStage;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -27,7 +27,7 @@ public class Launch extends Application {
         log.setFormatter(new SimpleFormatter());
         l.addHandler(log);
 
-        new ApplicationStage().launchAppStage(primary_stage);
+        new MainStage().launchAppStage(primary_stage);
 
     }
 

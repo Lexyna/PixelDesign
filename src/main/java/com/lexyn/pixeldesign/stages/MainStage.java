@@ -1,4 +1,5 @@
 package com.lexyn.pixeldesign.stages;
+import com.lexyn.pixeldesign.render.RenderCanvas;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,15 +9,15 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ApplicationStage {
+public class MainStage {
 
-    private static Logger logger = Logger.getLogger(ApplicationStage.class.getName());
+    private static Logger logger = Logger.getLogger(MainStage.class.getName());
 
-    private Stage appStage;
+    private Stage mainStage;
     private Scene scene;
     private Parent parent;
 
-    public ApplicationStage() {
+    public MainStage() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/appStage.fxml"));
 
         try {
@@ -29,11 +30,19 @@ public class ApplicationStage {
     }
 
     public void launchAppStage(Stage appStage) {
-        this.appStage = appStage;
+        this.mainStage = appStage;
 
         appStage.setScene(scene);
         appStage.setTitle("PixelDesign");
         appStage.setResizable(true);
+
+        mainStage.widthProperty().addListener((obs, oldValue, newValue) -> {
+            RenderCanvas.getInstance().drawBackground();
+        });
+
+        mainStage.heightProperty().addListener((obs, oldValue, newValue) -> {
+            RenderCanvas.getInstance().drawBackground();
+        });
 
         appStage.setMinHeight(420);
         appStage.setMinWidth(720);
