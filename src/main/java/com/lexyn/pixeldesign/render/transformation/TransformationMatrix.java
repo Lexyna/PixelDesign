@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.render.transformation;
 
+import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.logic.PixelMap;
 
 /**
@@ -32,6 +33,11 @@ public class TransformationMatrix {
 
     //pixel width and height
     private int pixelDistance;
+
+    public PixelCoordinate converToPixelCord(double mouseX, double mouseY){
+        return new PixelCoordinate((int) ((mouseX - TransformationMatrix.getInstance().getPixelStartX())/ TransformationMatrix.getInstance().getPixelDistance()),
+                (int) ((mouseY - TransformationMatrix.getInstance().getPixelStartY()) / TransformationMatrix.getInstance().getPixelDistance()));
+    }
 
     /**
      * Takes the width and height of the canvas and desired PixelMap

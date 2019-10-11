@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.render;
 
+import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.logic.PixelMap;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.scene.canvas.Canvas;
@@ -25,10 +26,16 @@ public class PixelRenderer {
 
     private PixelRenderer(){}
 
-    public void hightligthPixel(int x, int y){
-        ctx.setStroke(Color.web("#999999"));
-        ctx.fillRect(x * TransformationMatrix.getInstance().getPixelDistance(), y * TransformationMatrix.getInstance().getPixelDistance(),
-                TransformationMatrix.getInstance().getPixelDistance(), TransformationMatrix.getInstance().getPixelMapDimension());
+    public void highlightPixel(PixelCoordinate pixel){
+
+        if(!pixel.isValid())
+            return;
+
+        ctx.setFill(Color.web("#999999"));
+        ctx.fillRect(pixel.getX() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
+                pixel.getY() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY(),
+                TransformationMatrix.getInstance().getPixelDistance(),
+                TransformationMatrix.getInstance().getPixelDistance());
     }
 
     public void renderPixelGrid(){

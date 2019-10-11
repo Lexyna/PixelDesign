@@ -30,6 +30,11 @@ public class Renderer {
         PixelRenderer.getInstance().renderPixelGrid();
     }
 
+    public void redraw(){
+        drawBackground();
+        PixelRenderer.getInstance().renderPixelGrid();
+    }
+
     public void drawBackground(){
 
         ctx.setFill(PixelMap.getInstance().getBackgroundColor());
