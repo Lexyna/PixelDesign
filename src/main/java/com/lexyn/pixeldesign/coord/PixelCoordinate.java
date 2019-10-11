@@ -13,7 +13,7 @@ public class PixelCoordinate {
 
     public boolean isValid(){
         if(this.x < 0 || this.y < 0
-                || this.x > PixelMap.getInstance().getMapWidth() || this.y > PixelMap.getInstance().getMapHeight())
+                || this.x >= PixelMap.getInstance().getMapWidth() || this.y >= PixelMap.getInstance().getMapHeight())
             return false;
         return true;
     }

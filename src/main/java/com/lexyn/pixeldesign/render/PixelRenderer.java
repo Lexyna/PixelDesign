@@ -31,6 +31,7 @@ public class PixelRenderer {
         if(!pixel.isValid())
             return;
 
+        Renderer.getInstance().redraw();
         ctx.setFill(Color.web("#999999"));
         ctx.fillRect(pixel.getX() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
                 pixel.getY() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY(),

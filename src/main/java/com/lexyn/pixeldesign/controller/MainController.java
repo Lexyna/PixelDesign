@@ -42,8 +42,11 @@ public class MainController implements Initializable {
         canvas.heightProperty().bind(canvas_frame.heightProperty().add(-10));
 
         canvas.setOnMouseMoved((evt)->{
-            Renderer.getInstance().redraw();
-            PixelRenderer.getInstance().highlightPixel(TransformationMatrix.getInstance().converToPixelCord(evt.getX(), evt.getY()));
+            PixelCoordinate cord = TransformationMatrix.getInstance().converToPixelCord(evt.getX(), evt.getY());
+            PixelRenderer.getInstance().highlightPixel(cord);
+            if(cord.isValid())
+                canvas_frame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
+
         });
 
         Renderer.getInstance().setCanvas(canvas);
