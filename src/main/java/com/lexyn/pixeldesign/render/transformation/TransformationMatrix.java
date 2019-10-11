@@ -17,23 +17,70 @@ public class TransformationMatrix {
         return matrix;
     }
 
-    private double pixelWdith, pixelHeight;
+
+    private int fixedOffset = 10;
+
+    //map offset form canvas to get and even pixel map
+    private double offsetX, offsetY;
+
+    //start of pixel map coordinates
+    private double pixelStartX, pixelStartY;
+    private double pixelEndX, pixelEndY;
+
+    //pixel map width and height
+    private int pixelMapDimension;
+
+    //pixel width and height
+    private int pixelDistance;
 
     /**
      * Takes the width and height of the canvas and desired PixelMap
      * and calculates the pixel dimensions
      */
     public void calculatePixel(double canvasWidth, double canvasHeight){
-        this.pixelWdith = canvasWidth / PixelMap.getInstance().getMapWidth();
-        this.pixelHeight = canvasHeight / PixelMap.getInstance().getMapHeight();
+
+        //The pixel map dimensions are calculated with the min(canvasWidth, canvasHeight) to create evenly distributed map;
+        // => Pixels will not be streched
+
+        //Only one offset will be used
+        offsetX = (canvasWidth - fixedOffset) % PixelMap.getInstance().getMapWidth();
+        offsetY = (canvasHeight - fixedOffset) % PixelMap.getInstance().getMapHeight();
+
+
+        pixelMapDimension = (int) Math.min(canvasWidth - fixedOffset - offsetX, canvasHeight -fixedOffset - offsetY);
+
+        pixelDistance = pixelMapDimension / Math.max(PixelMap.getInstance().getMapWidth(), PixelMap.getInstance().getMapHeight());
+
+        pixelStartX = (canvasWidth - pixelMapDimension) / 2;
+        pixelStartY = (canvasHeight - pixelMapDimension) / 2;
+
+        pixelEndX = pixelStartX + pixelMapDimension;
+        pixelEndY = pixelStartY + pixelMapDimension;
+
     }
 
-    public double getPixelWdith(){
-        return pixelWdith;
+    public double getPixelDistance(){
+        return pixelDistance;
     }
 
-    public double getPixelHeight(){
-        return pixelHeight;
+    public int getPixelMapDimension(){
+        return pixelMapDimension;
     }
 
+    public double getPixelStartY(){
+        return pixelStartY;
+    }
+
+    public double getPixelStartX() {
+        return pixelStartX;
+    }
+
+    public double getPixelEndX() {
+        return pixelEndX;
+    }
+
+    public double getPixelEndY() {
+        return pixelEndY;
+    }
 }
+

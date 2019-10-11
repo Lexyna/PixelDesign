@@ -1,6 +1,5 @@
 package com.lexyn.pixeldesign.logic;
 
-import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 
 /**
@@ -21,8 +20,8 @@ public class PixelMap {
     private Color backgroundColor;
 
     private PixelMap(){
-        this.mapWidth = 16;
-        this.mapHeight = 16;
+        this.mapWidth = 64;
+        this.mapHeight = 64;
         this.backgroundColor = Color.web("#666666", 1.0);
     }
 

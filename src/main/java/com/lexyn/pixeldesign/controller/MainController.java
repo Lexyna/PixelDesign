@@ -37,7 +37,7 @@ public class MainController implements Initializable {
         logger.log(Level.INFO, "Setup canvas");
 
         canvas.widthProperty().bind(canvas_frame.widthProperty());
-        canvas.heightProperty().bind(canvas_frame.heightProperty());
+        canvas.heightProperty().bind(canvas_frame.heightProperty().add(-10));
 
         Renderer.getInstance().setCanvas(canvas);
         PixelRenderer.getInstance().setCanvas(canvas);

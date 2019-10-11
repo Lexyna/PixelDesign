@@ -23,7 +23,7 @@ public class MainStage {
 
         try {
             Parent root = loader.load();
-            scene = new Scene(root, 700, 400);
+            scene = new Scene(root, 750, 440);
         } catch (IOException ex) {
             logger.log(Level.SEVERE, ex.toString(), ex);
             System.exit(1);

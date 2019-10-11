@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="420.0" minWidth="720.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexyn.pixeldesign.controller.MainController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="440.0" minWidth="750.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexyn.pixeldesign.controller.MainController">
    <children>
       <MenuBar minHeight="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -39,7 +39,7 @@
                         <Font size="12.0" />
                      </font>
                      <content>
-                        <Canvas fx:id="canvas" height="231.0" width="498.0" />
+                        <Canvas fx:id="canvas" height="256.0" width="512.0" />
                      </content>
                   </TitledPane>
                </children>

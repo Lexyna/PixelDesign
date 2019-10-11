@@ -23,17 +23,37 @@ public class PixelRenderer {
     private Canvas canvas;
     private GraphicsContext ctx;
 
-    private PixelRenderer(){
+    private PixelRenderer(){}
+
+    public void hightligthPixel(int x, int y){
+        ctx.setStroke(Color.web("#999999"));
+        ctx.fillRect(x * TransformationMatrix.getInstance().getPixelDistance(), y * TransformationMatrix.getInstance().getPixelDistance(),
+                TransformationMatrix.getInstance().getPixelDistance(), TransformationMatrix.getInstance().getPixelMapDimension());
     }
 
     public void renderPixelGrid(){
-        for(var i = 0; i < PixelMap.getInstance().getMapWidth(); i++){
+        for(var i = 0; i < PixelMap.getInstance().getMapWidth() + 1; i++){
+
             ctx.setStroke(Color.BLACK);
-            ctx.strokeLine(i * TransformationMatrix.getInstance().getPixelWdith(), 0, i * TransformationMatrix.getInstance().getPixelWdith(), canvas.getHeight());
+            ctx.beginPath();
+
+            ctx.moveTo(i * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX()
+                    , TransformationMatrix.getInstance().getPixelStartY());
+            ctx.lineTo(i * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
+                    TransformationMatrix.getInstance().getPixelEndY());
+            ctx.stroke();
+
         }
-        for(var i = 0; i < PixelMap.getInstance().getMapHeight(); i++){
+        for(var i = 0; i < PixelMap.getInstance().getMapHeight() + 1; i++){
+
+            ctx.beginPath();
+
+            ctx.moveTo(TransformationMatrix.getInstance().getPixelStartX(),
+                    i * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY());
+            ctx.lineTo(TransformationMatrix.getInstance().getPixelEndX(),
+                    i * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY());
+            ctx.stroke();
             ctx.setStroke(Color.BLACK);
-            ctx.strokeLine(0, i * TransformationMatrix.getInstance().getPixelHeight(), canvas.getWidth(), i * TransformationMatrix.getInstance().getPixelHeight());
         }
     }
 
