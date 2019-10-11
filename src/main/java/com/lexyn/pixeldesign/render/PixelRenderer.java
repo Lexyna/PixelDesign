@@ -38,6 +38,18 @@ public class PixelRenderer {
                 TransformationMatrix.getInstance().getPixelDistance());
     }
 
+    public void renderPixel(PixelCoordinate pixel, Color color){
+
+        if(!pixel.isValid())
+            return;
+
+        ctx.setFill(color);
+        ctx.fillRect(pixel.getX() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
+                pixel.getY() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY(),
+                TransformationMatrix.getInstance().getPixelDistance(),
+                TransformationMatrix.getInstance().getPixelDistance());
+    }
+
     public void renderPixelGrid(){
         for(var i = 0; i < PixelMap.getInstance().getMapWidth() + 1; i++){
 
