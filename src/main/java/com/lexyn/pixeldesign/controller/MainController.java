@@ -4,14 +4,10 @@ import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.render.PixelRenderer;
 import com.lexyn.pixeldesign.render.Renderer;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.SplitPane;
 import javafx.scene.control.TitledPane;
-import javafx.scene.input.SwipeEvent;
-import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,8 +22,6 @@ public class MainController implements Initializable {
 
     private static Logger logger = Logger.getLogger(MainController.class.getName());
 
-    @FXML
-    AnchorPane root;
     @FXML
     private Canvas fx_canvas;
     @FXML
@@ -56,6 +50,7 @@ public class MainController implements Initializable {
 
         Renderer.getInstance().setCanvas(fx_canvas);
         PixelRenderer.getInstance().setCanvas(fx_canvas);
+
     }
 
 }
