@@ -4,10 +4,13 @@ import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.render.PixelRenderer;
 import com.lexyn.pixeldesign.render.Renderer;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.SwipeEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -26,9 +29,9 @@ public class MainController implements Initializable {
     @FXML
     AnchorPane root;
     @FXML
-    private Canvas canvas;
+    private Canvas fx_canvas;
     @FXML
-    private TitledPane canvas_frame;
+    private TitledPane fx_canvasFrame;
 
     public MainController(){
         System.out.println("Initialise Controller");
@@ -38,21 +41,21 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle bundle){
         logger.log(Level.INFO, "Setup canvas");
 
-        canvas.widthProperty().bind(canvas_frame.widthProperty());
-        canvas.heightProperty().bind(canvas_frame.heightProperty().add(-10));
+        fx_canvas.widthProperty().bind(fx_canvasFrame.widthProperty());
+        fx_canvas.heightProperty().bind(fx_canvasFrame.heightProperty().add(-10));
 
-        canvas.setOnMouseMoved((evt)->{
+        fx_canvas.setOnMouseMoved((evt)->{
             PixelCoordinate cord = TransformationMatrix.getInstance().converToPixelCord(evt.getX(), evt.getY());
             PixelRenderer.getInstance().highlightPixel(cord);
             if(cord.isValid())
-                canvas_frame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
+                fx_canvasFrame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
 
         });
 
-        Renderer.getInstance().setCanvas(canvas);
-        PixelRenderer.getInstance().setCanvas(canvas);
+        fx_canvasFrame.widthProperty().addListener(e -> Renderer.getInstance().resize());
+
+        Renderer.getInstance().setCanvas(fx_canvas);
+        PixelRenderer.getInstance().setCanvas(fx_canvas);
     }
-
-
 
 }

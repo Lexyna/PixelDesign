@@ -37,13 +37,9 @@ public class MainStage {
         appStage.setTitle("PixelDesign");
         appStage.setResizable(true);
 
-        mainStage.widthProperty().addListener((obs, oldValue, newValue) -> {
-            Renderer.getInstance().resize();
-        });
+        mainStage.widthProperty().addListener(e -> Renderer.getInstance().resize());
 
-        mainStage.heightProperty().addListener((obs, oldValue, newValue) -> {
-            Renderer.getInstance().resize();
-        });
+        mainStage.heightProperty().addListener(e -> Renderer.getInstance().resize());
 
         appStage.setMinHeight(420);
         appStage.setMinWidth(720);
