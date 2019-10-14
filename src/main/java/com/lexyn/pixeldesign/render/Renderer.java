@@ -1,6 +1,6 @@
 package com.lexyn.pixeldesign.render;
 
-import com.lexyn.pixeldesign.logic.PixelMap;
+import com.lexyn.pixeldesign.manager.SystemManager;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -11,40 +11,31 @@ import javafx.scene.canvas.GraphicsContext;
  */
 public class Renderer {
 
-    private static Renderer renderer;
 
     protected Canvas canvas;
     private GraphicsContext ctx;
 
-    public static Renderer getInstance(){
-        if(renderer == null)
-            renderer = new Renderer();
-        return renderer;
+    public Renderer(Canvas canvas){
+        this.canvas = canvas;
+        this.ctx = this.canvas.getGraphicsContext2D();
     }
-
-    public Renderer(){}
 
     public void resize(){
         TransformationMatrix.getInstance().calculatePixel(canvas.getWidth(), canvas.getHeight());
         drawBackground();
-        PixelRenderer.getInstance().renderPixelGrid();
+        SystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
     }
 
     public void redraw(){
         drawBackground();
-        PixelRenderer.getInstance().renderPixelGrid();
+        SystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
     }
 
     public void drawBackground(){
 
-        ctx.setFill(PixelMap.getInstance().getBackgroundColor());
+        ctx.setFill(SystemManager.getInstance().getActiveSystem().getPixelMap().getBackgroundColor());
         ctx.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
 
-    }
-
-    public void setCanvas(Canvas canvas){
-        this.canvas = canvas;
-        this.ctx = canvas.getGraphicsContext2D();
     }
 
 }

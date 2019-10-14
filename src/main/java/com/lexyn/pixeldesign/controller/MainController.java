@@ -1,6 +1,9 @@
 package com.lexyn.pixeldesign.controller;
 
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
+import com.lexyn.pixeldesign.logic.ParticleSystem;
+import com.lexyn.pixeldesign.logic.PixelMap;
+import com.lexyn.pixeldesign.manager.SystemManager;
 import com.lexyn.pixeldesign.render.PixelRenderer;
 import com.lexyn.pixeldesign.render.Renderer;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
@@ -8,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.TitledPane;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,16 +44,17 @@ public class MainController implements Initializable {
 
         fx_canvas.setOnMouseMoved((evt)->{
             PixelCoordinate cord = TransformationMatrix.getInstance().converToPixelCord(evt.getX(), evt.getY());
-            PixelRenderer.getInstance().highlightPixel(cord);
+            SystemManager.getInstance().getActiveSystem().getPixelRenderer().highlightPixel(cord);
             if(cord.isValid())
                 fx_canvasFrame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
 
         });
 
-        fx_canvasFrame.widthProperty().addListener(e -> Renderer.getInstance().resize());
+        fx_canvasFrame.widthProperty().addListener(e -> SystemManager.getInstance().getActiveSystem().getRenderer().resize());
+        fx_canvasFrame.heightProperty().addListener(e -> SystemManager.getInstance().getActiveSystem().getRenderer().resize());
 
-        Renderer.getInstance().setCanvas(fx_canvas);
-        PixelRenderer.getInstance().setCanvas(fx_canvas);
+        ParticleSystem particleSystem = new ParticleSystem(new Renderer(fx_canvas), new PixelRenderer(fx_canvas), new PixelMap(64,64, Color.web("666666", 1.0)));
+        SystemManager.getInstance().addSystem(particleSystem);
 
     }
 

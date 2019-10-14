@@ -1,7 +1,7 @@
 package com.lexyn.pixeldesign.render;
 
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
-import com.lexyn.pixeldesign.logic.PixelMap;
+import com.lexyn.pixeldesign.manager.SystemManager;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,25 +13,20 @@ import javafx.scene.paint.Color;
  */
 public class PixelRenderer {
 
-    private static PixelRenderer pixelRender;
-
-    public static PixelRenderer getInstance(){
-        if(pixelRender == null)
-            pixelRender = new PixelRenderer();
-        return pixelRender;
-    }
-
     private Canvas canvas;
     private GraphicsContext ctx;
 
-    private PixelRenderer(){}
+    public PixelRenderer(Canvas canvas){
+        this.canvas = canvas;
+        this.ctx = this.canvas.getGraphicsContext2D();
+    }
 
     public void highlightPixel(PixelCoordinate pixel){
 
         if(!pixel.isValid())
             return;
 
-        Renderer.getInstance().redraw();
+        SystemManager.getInstance().getActiveSystem().getRenderer().redraw();
         ctx.setFill(Color.web("#999999"));
         ctx.fillRect(pixel.getX() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
                 pixel.getY() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY(),
@@ -52,7 +47,7 @@ public class PixelRenderer {
     }
 
     public void renderPixelGrid(){
-        for(var i = 0; i < PixelMap.getInstance().getMapWidth() + 1; i++){
+        for(var i = 0; i < SystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth() + 1; i++){
 
             ctx.setStroke(Color.BLACK);
             ctx.beginPath();
@@ -64,7 +59,7 @@ public class PixelRenderer {
             ctx.stroke();
 
         }
-        for(var i = 0; i < PixelMap.getInstance().getMapHeight() + 1; i++){
+        for(var i = 0; i < SystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight() + 1; i++){
 
             ctx.beginPath();
 
@@ -75,11 +70,6 @@ public class PixelRenderer {
             ctx.stroke();
             ctx.setStroke(Color.BLACK);
         }
-    }
-
-    public void  setCanvas(Canvas canvas){
-        this.canvas = canvas;
-        this.ctx = canvas.getGraphicsContext2D();
     }
 
 }

@@ -8,21 +8,13 @@ import javafx.scene.paint.Color;
  */
 public class PixelMap {
 
-    private static PixelMap pixelMap;
-
-    public static PixelMap getInstance(){
-        if(pixelMap == null)
-            pixelMap =  new PixelMap();
-        return pixelMap;
-    }
-
     private int mapWidth, mapHeight;
     private Color backgroundColor;
 
-    private PixelMap(){
-        this.mapWidth = 64;
-        this.mapHeight = 64;
-        this.backgroundColor = Color.web("#666666", 1.0);
+    public PixelMap(int mapWidth, int mapHeight, Color color){
+        this.mapWidth = mapWidth;
+        this.mapHeight = mapHeight;
+        this.backgroundColor = color;
     }
 
 

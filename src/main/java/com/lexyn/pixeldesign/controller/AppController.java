@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.controller;
 
+import com.lexyn.pixeldesign.manager.SystemManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle bundle){
+
+        SystemManager.getInstance(fx_tabPane);
 
         try{
             Tab tab = new Tab();

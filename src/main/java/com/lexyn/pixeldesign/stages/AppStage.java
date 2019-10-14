@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.stages;
 
+import com.lexyn.pixeldesign.manager.SystemManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -35,6 +36,9 @@ public class AppStage {
         appStage.setScene(scene);
         appStage.setTitle("PixelDesign");
         appStage.setResizable(true);
+
+        appStage.heightProperty().addListener(e -> SystemManager.getInstance().getActiveSystem().getRenderer().resize());
+        appStage.widthProperty().addListener(e -> SystemManager.getInstance().getActiveSystem().getRenderer().resize());
 
         appStage.setMinHeight(420);
         appStage.setMinWidth(720);
