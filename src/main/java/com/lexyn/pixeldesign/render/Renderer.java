@@ -1,6 +1,6 @@
 package com.lexyn.pixeldesign.render;
 
-import com.lexyn.pixeldesign.manager.SystemManager;
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,17 +23,17 @@ public class Renderer {
     public void resize(){
         TransformationMatrix.getInstance().calculatePixel(canvas.getWidth(), canvas.getHeight());
         drawBackground();
-        SystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
+        ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
     }
 
     public void redraw(){
         drawBackground();
-        SystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
+        ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
     }
 
     public void drawBackground(){
 
-        ctx.setFill(SystemManager.getInstance().getActiveSystem().getPixelMap().getBackgroundColor());
+        ctx.setFill(ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getBackgroundColor());
         ctx.fillRect(0,0, canvas.getWidth(), canvas.getHeight());
 
     }

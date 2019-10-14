@@ -12,7 +12,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="New" />
+              <MenuItem fx:id="fx_newFile" mnemonicParsing="false" text="New File" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

@@ -3,7 +3,7 @@ package com.lexyn.pixeldesign.controller;
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.logic.ParticleSystem;
 import com.lexyn.pixeldesign.logic.PixelMap;
-import com.lexyn.pixeldesign.manager.SystemManager;
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import com.lexyn.pixeldesign.render.PixelRenderer;
 import com.lexyn.pixeldesign.render.Renderer;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
@@ -32,7 +32,7 @@ public class MainController implements Initializable {
     private TitledPane fx_canvasFrame;
 
     public MainController(){
-        System.out.println("Initialise Controller");
+        logger.log( Level.INFO,"Initialise Controller");
     }
 
     @Override
@@ -44,17 +44,17 @@ public class MainController implements Initializable {
 
         fx_canvas.setOnMouseMoved((evt)->{
             PixelCoordinate cord = TransformationMatrix.getInstance().converToPixelCord(evt.getX(), evt.getY());
-            SystemManager.getInstance().getActiveSystem().getPixelRenderer().highlightPixel(cord);
+            ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().highlightPixel(cord);
             if(cord.isValid())
                 fx_canvasFrame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
 
         });
 
-        fx_canvasFrame.widthProperty().addListener(e -> SystemManager.getInstance().getActiveSystem().getRenderer().resize());
-        fx_canvasFrame.heightProperty().addListener(e -> SystemManager.getInstance().getActiveSystem().getRenderer().resize());
+        fx_canvasFrame.widthProperty().addListener(e -> ParticleSystemManager.getInstance().getActiveSystem().getRenderer().resize());
+        fx_canvasFrame.heightProperty().addListener(e -> ParticleSystemManager.getInstance().getActiveSystem().getRenderer().resize());
 
         ParticleSystem particleSystem = new ParticleSystem(new Renderer(fx_canvas), new PixelRenderer(fx_canvas), new PixelMap(64,64, Color.web("666666", 1.0)));
-        SystemManager.getInstance().addSystem(particleSystem);
+        ParticleSystemManager.getInstance().addSystem(particleSystem);
 
     }
 

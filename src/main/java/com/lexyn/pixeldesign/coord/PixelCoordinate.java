@@ -1,6 +1,6 @@
 package com.lexyn.pixeldesign.coord;
 
-import com.lexyn.pixeldesign.manager.SystemManager;
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 
 public class PixelCoordinate {
 
@@ -14,8 +14,8 @@ public class PixelCoordinate {
     public boolean isValid(){
         return !(this.x < 0
                 || this.y < 0
-                || this.x >= SystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth()
-                || this.y >= SystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight());
+                || this.x >= ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth()
+                || this.y >= ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight());
     }
 
     public int getX() {

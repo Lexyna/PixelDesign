@@ -1,7 +1,7 @@
 package com.lexyn.pixeldesign.render.transformation;
 
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
-import com.lexyn.pixeldesign.manager.SystemManager;
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 
 /**
  * Transforms pixle coordinates to rts coordinates
@@ -49,13 +49,13 @@ public class TransformationMatrix {
         // => Pixels will not be streched
 
         //Only one offset will be used
-        offsetX = (canvasWidth - fixedOffset) % SystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth();
-        offsetY = (canvasHeight - fixedOffset) % SystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight();
+        offsetX = (canvasWidth - fixedOffset) % ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth();
+        offsetY = (canvasHeight - fixedOffset) % ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight();
 
 
         pixelMapDimension = (int) Math.min(canvasWidth - fixedOffset - offsetX, canvasHeight -fixedOffset - offsetY);
 
-        pixelDistance = pixelMapDimension / Math.max(SystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth(), SystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight());
+        pixelDistance = pixelMapDimension / Math.max(ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth(), ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight());
 
         pixelStartX = (canvasWidth - pixelMapDimension) / 2;
         pixelStartY = (canvasHeight - pixelMapDimension) / 2;

@@ -1,7 +1,7 @@
 package com.lexyn.pixeldesign.render;
 
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
-import com.lexyn.pixeldesign.manager.SystemManager;
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,7 +26,7 @@ public class PixelRenderer {
         if(!pixel.isValid())
             return;
 
-        SystemManager.getInstance().getActiveSystem().getRenderer().redraw();
+        ParticleSystemManager.getInstance().getActiveSystem().getRenderer().redraw();
         ctx.setFill(Color.web("#999999"));
         ctx.fillRect(pixel.getX() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
                 pixel.getY() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY(),
@@ -47,7 +47,7 @@ public class PixelRenderer {
     }
 
     public void renderPixelGrid(){
-        for(var i = 0; i < SystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth() + 1; i++){
+        for(var i = 0; i < ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth() + 1; i++){
 
             ctx.setStroke(Color.BLACK);
             ctx.beginPath();
@@ -59,7 +59,7 @@ public class PixelRenderer {
             ctx.stroke();
 
         }
-        for(var i = 0; i < SystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight() + 1; i++){
+        for(var i = 0; i < ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight() + 1; i++){
 
             ctx.beginPath();
 
