@@ -1,6 +1,7 @@
-package com.lexyn.pixeldesign.controller;
+package com.lexyn.pixeldesign.fx.controller;
 
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
+import com.lexyn.pixeldesign.fx.cellfactory.EmitterListCell;
 import com.lexyn.pixeldesign.logic.ParticleSystem;
 import com.lexyn.pixeldesign.logic.PixelMap;
 import com.lexyn.pixeldesign.logic.emitter.Emitter;
@@ -11,10 +12,7 @@ import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -57,7 +55,7 @@ public class MainController implements Initializable {
         fx_canvasFrame.heightProperty().addListener(e -> ParticleSystemManager.getInstance().getActiveSystem().getRenderer().resize());
 
         addCanvasListener(fx_canvas);
-        overwriteCellFactory(fx_emitterĹist);
+        setCellFactories(fx_emitterĹist);
         addMenuListener(fx_newEmitter, fx_deleteEmitter);
 
         ParticleSystem particleSystem = new ParticleSystem(new Renderer(fx_canvas), new PixelRenderer(fx_canvas), new PixelMap(64,64, Color.web("666666", 1.0)));
@@ -66,7 +64,7 @@ public class MainController implements Initializable {
     }
 
     private void addMenuListener(MenuItem fx_newEmitter, MenuItem fx_deleteEmitter){
-        fx_newEmitter.setOnAction(e -> fx_emitterĹist.getItems().add(new Emitter("Emitter Test")));
+        fx_newEmitter.setOnAction(e -> fx_emitterĹist.getItems().add(new Emitter("Emitter")));
         fx_deleteEmitter.setOnAction(e -> fx_emitterĹist.getItems().remove(fx_emitterĹist.getSelectionModel().getSelectedIndex()));
     }
 
@@ -78,20 +76,10 @@ public class MainController implements Initializable {
                 fx_canvasFrame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
 
         });
-
     }
 
-    private void overwriteCellFactory(ListView<Emitter> fx_emitterĹist){
-        fx_emitterĹist.setCellFactory(param -> new ListCell<>() {
-            @Override
-            public void updateItem(Emitter emitter, boolean empty){
-                super.updateItem(emitter, empty);
-                if(empty || emitter== null || emitter.getName().isEmpty())
-                    setText("");
-                else
-                    setText(emitter.getName());
-            }
-        });
+    private void setCellFactories(ListView<Emitter> fx_emitterĹist){
+        fx_emitterĹist.setCellFactory(list -> new EmitterListCell());
     }
 
 }

@@ -1,6 +1,6 @@
 package com.lexyn.pixeldesign.launch;
 
-import com.lexyn.pixeldesign.stages.AppStage;
+import com.lexyn.pixeldesign.fx.stages.AppStage;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

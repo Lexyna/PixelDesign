@@ -1,4 +1,4 @@
-package com.lexyn.pixeldesign.stages;
+package com.lexyn.pixeldesign.fx.stages;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

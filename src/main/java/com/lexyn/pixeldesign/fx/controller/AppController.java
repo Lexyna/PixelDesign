@@ -1,4 +1,4 @@
-package com.lexyn.pixeldesign.controller;
+package com.lexyn.pixeldesign.fx.controller;
 
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.fxml.FXML;

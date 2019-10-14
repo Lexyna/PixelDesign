@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexyn.pixeldesign.controller.MainController">
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexyn.pixeldesign.fx.controller.MainController">
    <items>
       <AnchorPane minHeight="0.0" minWidth="550.0" prefHeight="160.0" prefWidth="100.0">
          <children>
@@ -44,7 +44,7 @@
                                  <content>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <ListView fx:id="fx_emitterĹist" layoutX="-37.0" layoutY="-17.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <ListView fx:id="fx_emitterĹist" editable="true" layoutX="-37.0" layoutY="-17.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <contextMenu>
                                                 <ContextMenu>
                                                   <items>
