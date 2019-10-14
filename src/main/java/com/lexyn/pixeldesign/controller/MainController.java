@@ -3,24 +3,21 @@ package com.lexyn.pixeldesign.controller;
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.logic.ParticleSystem;
 import com.lexyn.pixeldesign.logic.PixelMap;
+import com.lexyn.pixeldesign.logic.emitter.Emitter;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import com.lexyn.pixeldesign.render.PixelRenderer;
 import com.lexyn.pixeldesign.render.Renderer;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TitledPane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +35,7 @@ public class MainController implements Initializable {
     @FXML
     private TitledPane fx_canvasFrame;
     @FXML
-    private ListView<String> fx_emitterĹist;
+    private ListView<Emitter> fx_emitterĹist;
 
 
     //Menu Context
@@ -60,6 +57,7 @@ public class MainController implements Initializable {
         fx_canvasFrame.heightProperty().addListener(e -> ParticleSystemManager.getInstance().getActiveSystem().getRenderer().resize());
 
         addCanvasListener(fx_canvas);
+        overwriteCellFactory(fx_emitterĹist);
         addMenuListener(fx_newEmitter, fx_deleteEmitter);
 
         ParticleSystem particleSystem = new ParticleSystem(new Renderer(fx_canvas), new PixelRenderer(fx_canvas), new PixelMap(64,64, Color.web("666666", 1.0)));
@@ -68,7 +66,7 @@ public class MainController implements Initializable {
     }
 
     private void addMenuListener(MenuItem fx_newEmitter, MenuItem fx_deleteEmitter){
-        fx_newEmitter.setOnAction(e -> fx_emitterĹist.getItems().add("new Emitter"));
+        fx_newEmitter.setOnAction(e -> fx_emitterĹist.getItems().add(new Emitter("Emitter Test")));
         fx_deleteEmitter.setOnAction(e -> fx_emitterĹist.getItems().remove(fx_emitterĹist.getSelectionModel().getSelectedIndex()));
     }
 
@@ -81,6 +79,19 @@ public class MainController implements Initializable {
 
         });
 
+    }
+
+    private void overwriteCellFactory(ListView<Emitter> fx_emitterĹist){
+        fx_emitterĹist.setCellFactory(param -> new ListCell<>() {
+            @Override
+            public void updateItem(Emitter emitter, boolean empty){
+                super.updateItem(emitter, empty);
+                if(empty || emitter== null || emitter.getName().isEmpty())
+                    setText("");
+                else
+                    setText(emitter.getName());
+            }
+        });
     }
 
 }
