@@ -34,7 +34,8 @@ public class MainController implements Initializable {
     private TitledPane fx_canvasFrame;
     @FXML
     private ListView<Emitter> fx_emitterĹist;
-
+    @FXML
+    private ScrollPane fx_propertyPane;
 
     //Menu Context
     @FXML
@@ -56,6 +57,7 @@ public class MainController implements Initializable {
 
         addCanvasListener(fx_canvas);
         setCellFactories(fx_emitterĹist);
+        setSelectionListener(fx_emitterĹist);
         addMenuListener(fx_newEmitter, fx_deleteEmitter);
 
         ParticleSystem particleSystem = new ParticleSystem(new Renderer(fx_canvas), new PixelRenderer(fx_canvas), new PixelMap(64,64, Color.web("666666", 1.0)));
@@ -64,7 +66,7 @@ public class MainController implements Initializable {
     }
 
     private void addMenuListener(MenuItem fx_newEmitter, MenuItem fx_deleteEmitter){
-        fx_newEmitter.setOnAction(e -> fx_emitterĹist.getItems().add(new Emitter("Emitter")));
+        fx_newEmitter.setOnAction(e -> fx_emitterĹist.getItems().add(new Emitter("Emitter", fx_propertyPane)));
         fx_deleteEmitter.setOnAction(e -> fx_emitterĹist.getItems().remove(fx_emitterĹist.getSelectionModel().getSelectedIndex()));
     }
 
@@ -76,6 +78,10 @@ public class MainController implements Initializable {
                 fx_canvasFrame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
 
         });
+    }
+
+    private void setSelectionListener(ListView<Emitter> fx_emitterĹist){
+        fx_emitterĹist.getSelectionModel().selectedIndexProperty().addListener(e -> fx_emitterĹist.getSelectionModel().getSelectedItem().setProperty());
     }
 
     private void setCellFactories(ListView<Emitter> fx_emitterĹist){

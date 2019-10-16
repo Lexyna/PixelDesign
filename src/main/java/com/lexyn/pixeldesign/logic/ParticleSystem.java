@@ -5,7 +5,7 @@ import com.lexyn.pixeldesign.render.Renderer;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
- * This class is a Managment store  for all information that is currently display
+ * This class is a Management store  for all information that is currently display
  * and the render speed
  * @author lexyna
  */

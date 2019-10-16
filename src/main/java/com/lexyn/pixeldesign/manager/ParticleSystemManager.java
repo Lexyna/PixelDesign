@@ -27,6 +27,8 @@ public class ParticleSystemManager {
         return systemManager;
     }
 
+    /* -------------------CLASS---------------------*/
+
     private List<ParticleSystem> systems;
 
     ParticleSystem activeSystem;
