@@ -29,14 +29,18 @@ public class PropertyController implements Initializable {
         fx_XCoord.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth(), 0 ,1 ));
         fx_YCoord.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight(), 0 ,1 ));
 
-        fx_spawnRadiusMin.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0 ,1 ));
-        fx_spawnRadiusMax.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0 ,1 ));
+        fx_spawnRadiusMin.setValueFactory(createSimplespinner());
+        fx_spawnRadiusMax.setValueFactory(createSimplespinner());
 
-        fx_spawnRateMin.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0 ,1 ));
-        fx_spawnRateMax.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0 ,1 ));
+        fx_spawnRateMin.setValueFactory(createSimplespinner());
+        fx_spawnRateMax.setValueFactory(createSimplespinner());
 
-        fx_spawnIntervallMin.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0 ,1 ));
-        fx_spawnIntervallMax.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0 ,1 ));
+        fx_spawnIntervallMin.setValueFactory(createSimplespinner());
+        fx_spawnIntervallMax.setValueFactory(createSimplespinner());
 
+    }
+
+    private SpinnerValueFactory createSimplespinner(){
+        return new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0, 1);
     }
 }
