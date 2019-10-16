@@ -31,7 +31,6 @@ public class EmitterListCell extends ListCell<Emitter> {
         setGraphic(textField);
 
         dragandDrop(thisCell);
-
     }
 
     @Override

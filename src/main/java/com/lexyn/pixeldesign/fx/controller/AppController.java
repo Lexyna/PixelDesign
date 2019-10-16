@@ -28,6 +28,7 @@ public class AppController implements Initializable {
        createTab();
 
         fx_tabPane.getSelectionModel().selectedIndexProperty().addListener(e -> ParticleSystemManager.getInstance().changeActiveSystem());
+        fx_tabPane.setTabDragPolicy(TabPane.TabDragPolicy.REORDER);
 
         fx_newFile.setOnAction(e -> createTab());
 
