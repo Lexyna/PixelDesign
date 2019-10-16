@@ -1,5 +1,7 @@
 package com.lexyn.pixeldesign.fx.tab;
 
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
@@ -7,17 +9,19 @@ import javafx.scene.control.TextField;
 
 public class EditableTab extends Tab {
 
-    public EditableTab(StringProperty name){
+    StringProperty name;
+
+    public EditableTab(){
+
+        name = new SimpleStringProperty();
+
+        TextField textField = new TextField();
         Label label = new Label();
 
         label.textProperty().bind(name);
         setGraphic(label);
 
-        TextField textField = new TextField();
-
-
         label.setOnMouseClicked(e -> {
-                System.out.println("clicked");
                 if (e.getClickCount() == 2) {
                     textField.setText(label.getText());
                     setGraphic(textField);
@@ -38,7 +42,9 @@ public class EditableTab extends Tab {
                 setGraphic(label);
             }
         });
-
     }
 
+    public StringProperty nameProperty() {
+        return name;
+    }
 }
