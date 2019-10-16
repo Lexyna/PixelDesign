@@ -17,27 +17,20 @@ public class Emitter implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private ScrollPane propertyPane;
     private Node propertyNode;
 
     public Emitter(){}
 
-    public Emitter(String name, ScrollPane propertyPane){
+    public Emitter(String name){
         this.name = name;
-        this.propertyPane = propertyPane;
-        createPropertyContent();
-    }
-
-    private void createPropertyContent() {
         try {
             propertyNode = FXMLLoader.load(this.getClass().getResource("/fxml/propertyStage.fxml"));
-            setProperty();
         }catch (IOException ex){
 
         }
     }
 
-    public void setProperty(){
+    public void setProperty(ScrollPane propertyPane){
         propertyPane.setContent(propertyNode);
     }
 

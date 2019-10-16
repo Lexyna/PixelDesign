@@ -66,8 +66,15 @@ public class MainController implements Initializable {
     }
 
     private void addMenuListener(MenuItem fx_newEmitter, MenuItem fx_deleteEmitter){
-        fx_newEmitter.setOnAction(e -> fx_emitterĹist.getItems().add(new Emitter("Emitter", fx_propertyPane)));
-        fx_deleteEmitter.setOnAction(e -> fx_emitterĹist.getItems().remove(fx_emitterĹist.getSelectionModel().getSelectedIndex()));
+        fx_newEmitter.setOnAction(e -> {
+            Emitter emitter = new Emitter("Emitter");
+            emitter.setProperty(fx_propertyPane);
+            fx_emitterĹist.getItems().add(emitter);
+        });
+        fx_deleteEmitter.setOnAction(e -> {
+            if (fx_emitterĹist.getSelectionModel().getSelectedIndex() >= 0)
+                fx_emitterĹist.getItems().remove(fx_emitterĹist.getSelectionModel().getSelectedIndex());
+        });
     }
 
     private void addCanvasListener(Canvas fx_canvas){
@@ -81,7 +88,7 @@ public class MainController implements Initializable {
     }
 
     private void setSelectionListener(ListView<Emitter> fx_emitterĹist){
-        fx_emitterĹist.getSelectionModel().selectedIndexProperty().addListener(e -> fx_emitterĹist.getSelectionModel().getSelectedItem().setProperty());
+        fx_emitterĹist.getSelectionModel().selectedIndexProperty().addListener(e -> fx_emitterĹist.getSelectionModel().getSelectedItem().setProperty(fx_propertyPane));
     }
 
     private void setCellFactories(ListView<Emitter> fx_emitterĹist){
