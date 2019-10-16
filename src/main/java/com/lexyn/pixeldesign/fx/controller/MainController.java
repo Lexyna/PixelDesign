@@ -74,6 +74,8 @@ public class MainController implements Initializable {
         fx_deleteEmitter.setOnAction(e -> {
             if (fx_emitterĹist.getSelectionModel().getSelectedIndex() >= 0)
                 fx_emitterĹist.getItems().remove(fx_emitterĹist.getSelectionModel().getSelectedIndex());
+            if(fx_emitterĹist.getItems().size() == 0)
+                fx_propertyPane.setContent(null);
         });
     }
 
@@ -88,7 +90,10 @@ public class MainController implements Initializable {
     }
 
     private void setSelectionListener(ListView<Emitter> fx_emitterĹist){
-        fx_emitterĹist.getSelectionModel().selectedIndexProperty().addListener(e -> fx_emitterĹist.getSelectionModel().getSelectedItem().setProperty(fx_propertyPane));
+        fx_emitterĹist.getSelectionModel().selectedIndexProperty().addListener(e -> {
+            if(fx_emitterĹist.getSelectionModel().getSelectedItem() != null)
+                fx_emitterĹist.getSelectionModel().getSelectedItem().setProperty(fx_propertyPane);
+        });
     }
 
     private void setCellFactories(ListView<Emitter> fx_emitterĹist){
