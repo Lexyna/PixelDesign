@@ -30,7 +30,7 @@ public class EmitterListCell extends ListCell<Emitter> {
         });
         setGraphic(textField);
 
-        dragandDrop(thisCell);
+        dragAndDrop(thisCell);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class EmitterListCell extends ListCell<Emitter> {
         setContentDisplay(ContentDisplay.TEXT_ONLY);
     }
 
-    private void dragandDrop(ListCell<Emitter> thisCell){
+    private void dragAndDrop(ListCell<Emitter> thisCell){
         setOnDragDetected(e -> {
             if(getItem() == null)
                 return;

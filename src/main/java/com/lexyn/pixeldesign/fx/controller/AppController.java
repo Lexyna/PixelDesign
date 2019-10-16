@@ -1,10 +1,11 @@
 package com.lexyn.pixeldesign.fx.controller;
 
+import com.lexyn.pixeldesign.fx.tab.EditableTab;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -25,9 +26,10 @@ public class AppController implements Initializable {
 
         ParticleSystemManager.getInstance(fx_tabPane);
 
-       createTab();
+        createTab();
 
         fx_tabPane.getSelectionModel().selectedIndexProperty().addListener(e -> ParticleSystemManager.getInstance().changeActiveSystem());
+        //The Policy consumes the left click event for the TabPane
         fx_tabPane.setTabDragPolicy(TabPane.TabDragPolicy.REORDER);
 
         fx_newFile.setOnAction(e -> createTab());
@@ -36,11 +38,10 @@ public class AppController implements Initializable {
 
     private void createTab(){
         try{
-            Tab tab = new Tab();
+            Tab tab = new EditableTab(new SimpleStringProperty("Particle Demo"));
             tab.setOnCloseRequest(e -> ParticleSystemManager.getInstance().removeParticleSystem(fx_tabPane.getTabs().indexOf(tab)));
             fx_tabPane.getTabs().add(tab);
-            tab.setContent((Node) FXMLLoader.load(this.getClass().getResource("/fxml/mainStage.fxml")));
-            tab.setText("Particle Demo");
+            tab.setContent(FXMLLoader.load(this.getClass().getResource("/fxml/mainStage.fxml")));
         }catch (IOException e){
 
         }
