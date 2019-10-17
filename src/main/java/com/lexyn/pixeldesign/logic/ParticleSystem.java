@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.util.Duration;
 
 /**
- * This class is a Management store  for all information that is currently display
+ * This class is a Management store  for all information that is currently displayed
  * and the render speed
  * @author lexyna
  */

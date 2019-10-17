@@ -1,5 +1,8 @@
 package com.lexyn.pixeldesign.logic.emitter;
 
+import com.lexyn.pixeldesign.fx.controller.PropertyController;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -19,12 +22,21 @@ public class Emitter implements Serializable {
     private String name;
     private AnchorPane propertyNode;
 
+    //Emitter properties
+
+    private DoubleProperty spawnRateMin = new SimpleDoubleProperty(0), spawnRateMax = new SimpleDoubleProperty(0);
+    private DoubleProperty spawnRadiusMin = new SimpleDoubleProperty(0), spawnRadiusMax = new SimpleDoubleProperty(0);
+    private DoubleProperty spawnIntervallMin = new SimpleDoubleProperty(0), spawnIntervallMax = new SimpleDoubleProperty(0);
+
     public Emitter(){}
 
     public Emitter(String name){
         this.name = name;
         try {
-            propertyNode = FXMLLoader.load(this.getClass().getResource("/fxml/propertyStage.fxml"));
+            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
+            propertyNode = loader.load();
+            PropertyController pc = loader.getController();
+            pc.bindParamsToEmitter(this);
         }catch (IOException ex){
 
         }
@@ -41,6 +53,31 @@ public class Emitter implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public DoubleProperty spawnRateMinProperty() {
+        return spawnRateMin;
+    }
+
+    public DoubleProperty spawnRateMaxProperty() {
+        return spawnRateMax;
+    }
+
+    public DoubleProperty spawnRadiusMinProperty() {
+        return spawnRadiusMin;
+    }
+
+    public DoubleProperty spawnRadiusMaxProperty() {
+        return spawnRadiusMax;
+    }
+
+
+    public DoubleProperty spawnIntervallMinProperty() {
+        return spawnIntervallMin;
+    }
+
+    public DoubleProperty spawnIntervallMaxProperty() {
+        return spawnIntervallMax;
     }
 
     @Override

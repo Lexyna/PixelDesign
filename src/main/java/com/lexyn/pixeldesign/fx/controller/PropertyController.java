@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.fx.controller;
 
+import com.lexyn.pixeldesign.logic.emitter.Emitter;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,6 +57,15 @@ public class PropertyController implements Initializable {
 
         bindSliderToSpinner(fx_spawnIntervallMinS, fx_spawnIntervallMin);
         bindSliderToSpinner(fx_spawnIntervallMaxS, fx_spawnIntervallMax);
+    }
+
+    public void bindParamsToEmitter(Emitter emitter){
+        emitter.spawnRateMinProperty().bindBidirectional(fx_spawnRateMin.getValueFactory().valueProperty());
+        emitter.spawnRateMaxProperty().bindBidirectional(fx_spawnRateMax.getValueFactory().valueProperty());
+        emitter.spawnRadiusMinProperty().bindBidirectional(fx_spawnRadiusMin.getValueFactory().valueProperty());
+        emitter.spawnRadiusMaxProperty().bindBidirectional(fx_spawnRadiusMax.getValueFactory().valueProperty());
+        emitter.spawnIntervallMinProperty().bindBidirectional(fx_spawnIntervallMin.getValueFactory().valueProperty());
+        emitter.spawnIntervallMaxProperty().bindBidirectional(fx_spawnIntervallMax.getValueFactory().valueProperty());
     }
 
     private void bindSliderToSpinner(Slider slider, Spinner spinner){
