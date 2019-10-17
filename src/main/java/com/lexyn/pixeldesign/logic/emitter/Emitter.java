@@ -43,7 +43,7 @@ public class Emitter implements Serializable {
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
             propertyNode = loader.load();
             PropertyController pc = loader.getController();
-            //pc.bindParamsToEmitter(this);
+            pc.bindParamsToEmitter(this);
         }catch (IOException ex){
 
         }
