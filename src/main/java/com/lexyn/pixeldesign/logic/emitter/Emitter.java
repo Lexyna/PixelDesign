@@ -20,6 +20,7 @@ public class Emitter implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
+    // TODO: Serialize anchorPane?
     private transient AnchorPane propertyNode;
 
     //Emitter properties
@@ -42,7 +43,7 @@ public class Emitter implements Serializable {
             FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
             propertyNode = loader.load();
             PropertyController pc = loader.getController();
-            pc.bindParamsToEmitter(this);
+            //pc.bindParamsToEmitter(this);
         }catch (IOException ex){
 
         }

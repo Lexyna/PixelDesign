@@ -15,20 +15,20 @@ import java.util.ResourceBundle;
 public class PropertyController implements Initializable {
 
     @FXML
-    private Spinner fx_XCoord, fx_YCoord;
+    private Spinner<Integer> fx_XCoord, fx_YCoord;
 
     @FXML
-    private Spinner fx_spawnRadiusMin, fx_spawnRadiusMax;
+    private Spinner<Double> fx_spawnRadiusMin, fx_spawnRadiusMax;
     @FXML
     private Slider fx_spawnRadiusMinS, fx_spawnRadiusMaxS;
 
     @FXML
-    private Spinner fx_spawnRateMin, fx_spawnRateMax;
+    private Spinner<Double> fx_spawnRateMin, fx_spawnRateMax;
     @FXML
     private Slider fx_spawnRateMinS,fx_spawnRateMaxS;
 
     @FXML
-    private Spinner fx_spawnIntervallMin, fx_spawnIntervallMax;
+    private Spinner<Double> fx_spawnIntervallMin, fx_spawnIntervallMax;
     @FXML
     private Slider fx_spawnIntervallMinS, fx_spawnIntervallMaxS;
     @FXML
@@ -64,14 +64,14 @@ public class PropertyController implements Initializable {
     }
 
     public void bindParamsToEmitter(Emitter emitter){
-        fx_spawnRateMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRateMin((int) newVal);});
-        fx_spawnRateMax.valueProperty().addListener((obs, oldVal, bnewVal) -> {emitter.setSpawnRateMax((int) bnewVal);});
-        fx_spawnRadiusMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMin((int) newVal);});
-        fx_spawnRadiusMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMax((int) newVal);});
-        fx_spawnIntervallMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMin((int) newVal);});
-        fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax((int) newVal);});
-        fx_XCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordX((int) newVal);});
-        fx_YCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordY((int) newVal);});
+        fx_spawnRadiusMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMin(newVal.intValue());});
+        fx_spawnRadiusMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMax(newVal.intValue());});
+        fx_spawnRateMin.valueProperty().addListener((obs, oldVal, newVal) -> emitter.setSpawnRateMax(newVal.intValue()));
+        fx_spawnRateMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRateMax(newVal.intValue());});
+        fx_spawnIntervallMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMin(newVal.intValue());});
+        fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax(newVal.intValue());});
+        fx_XCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordX(newVal);});
+        fx_YCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordY(newVal);});
         fx_particleColor.setOnAction(e -> emitter.setParticleColor(fx_particleColor.getValue()));
     }
 
