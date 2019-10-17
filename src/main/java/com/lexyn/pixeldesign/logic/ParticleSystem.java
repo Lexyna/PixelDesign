@@ -33,7 +33,7 @@ public class ParticleSystem {
         animationLoop.setCycleCount(Timeline.INDEFINITE);
 
         KeyFrame kf = new KeyFrame(
-                Duration.seconds(0.02),
+                Duration.seconds(1.00),
                 event -> System.out.println("tick" + name)
         );
 
