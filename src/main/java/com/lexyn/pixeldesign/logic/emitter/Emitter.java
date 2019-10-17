@@ -3,6 +3,7 @@ package com.lexyn.pixeldesign.logic.emitter;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -17,7 +18,7 @@ public class Emitter implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private Node propertyNode;
+    private AnchorPane propertyNode;
 
     public Emitter(){}
 
@@ -32,6 +33,7 @@ public class Emitter implements Serializable {
 
     public void setProperty(ScrollPane propertyPane){
         propertyPane.setContent(propertyNode);
+        propertyNode.prefWidthProperty().bind(propertyPane.widthProperty());
     }
 
     public void setName(String name) {
