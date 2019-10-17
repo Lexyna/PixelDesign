@@ -66,7 +66,7 @@ public class PropertyController implements Initializable {
     public void bindParamsToEmitter(Emitter emitter){
         fx_spawnRadiusMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMin(newVal.intValue());});
         fx_spawnRadiusMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMax(newVal.intValue());});
-        fx_spawnRateMin.valueProperty().addListener((obs, oldVal, newVal) -> emitter.setSpawnRateMax(newVal.intValue()));
+        fx_spawnRateMin.valueProperty().addListener((obs, oldVal, newVal) -> emitter.setSpawnRateMin(newVal.intValue()));
         fx_spawnRateMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRateMax(newVal.intValue());});
         fx_spawnIntervallMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMin(newVal.intValue());});
         fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax(newVal.intValue());});
