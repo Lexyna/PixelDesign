@@ -1,7 +1,6 @@
 package com.lexyn.pixeldesign.logic.emitter;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 

@@ -42,9 +42,11 @@ public class ParticleSystemManager {
     }
 
     public void changeActiveSystem(){
+        activeSystem.stopAnimation();
         if(fx_tabPane.getSelectionModel().getSelectedIndex() >= 0 && systems.size() > 0) {
             activeSystem = systems.get(fx_tabPane.getSelectionModel().getSelectedIndex());
             activeSystem.getRenderer().resize();
+            activeSystem.playAnimation();
         }
     }
 
@@ -54,11 +56,15 @@ public class ParticleSystemManager {
 
     public void addSystem(ParticleSystem system){
         this.systems.add(system);
+        if(activeSystem != null)
+            activeSystem.stopAnimation();
         activeSystem = system;
+        activeSystem.playAnimation();
         fx_tabPane.getSelectionModel().selectLast();
     }
 
     public void removeParticleSystem(int index){
+        activeSystem.stopAnimation();
         systems.remove(index);
         if(index == fx_tabPane.getSelectionModel().getSelectedIndex() && index > 0) {
             activeSystem = systems.get(index - 1);
