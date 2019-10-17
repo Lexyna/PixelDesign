@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -24,9 +25,15 @@ public class Emitter implements Serializable {
 
     //Emitter properties
 
+    private DoubleProperty coordX = new SimpleDoubleProperty(0), coordY = new SimpleDoubleProperty(0);
+
     private DoubleProperty spawnRateMin = new SimpleDoubleProperty(0), spawnRateMax = new SimpleDoubleProperty(0);
     private DoubleProperty spawnRadiusMin = new SimpleDoubleProperty(0), spawnRadiusMax = new SimpleDoubleProperty(0);
     private DoubleProperty spawnIntervallMin = new SimpleDoubleProperty(0), spawnIntervallMax = new SimpleDoubleProperty(0);
+
+    //Particle Properties
+
+    private Color particleColor;
 
     public Emitter(){}
 
@@ -53,6 +60,18 @@ public class Emitter implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public void setParticleColor(Color color){
+        this.particleColor = color;
+    }
+
+    public DoubleProperty coordX(){
+        return coordX;
+    }
+
+    public DoubleProperty coordY(){
+        return coordY;
     }
 
     public DoubleProperty spawnRateMinProperty() {

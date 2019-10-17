@@ -4,6 +4,7 @@ import com.lexyn.pixeldesign.logic.emitter.Emitter;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -30,6 +31,9 @@ public class PropertyController implements Initializable {
     private Spinner fx_spawnIntervallMin, fx_spawnIntervallMax;
     @FXML
     private Slider fx_spawnIntervallMinS, fx_spawnIntervallMaxS;
+    @FXML
+    private ColorPicker fx_particleColor;
+
 
     public PropertyController(){
 
@@ -66,6 +70,9 @@ public class PropertyController implements Initializable {
         emitter.spawnRadiusMaxProperty().bindBidirectional(fx_spawnRadiusMax.getValueFactory().valueProperty());
         emitter.spawnIntervallMinProperty().bindBidirectional(fx_spawnIntervallMin.getValueFactory().valueProperty());
         emitter.spawnIntervallMaxProperty().bindBidirectional(fx_spawnIntervallMax.getValueFactory().valueProperty());
+        emitter.coordX().bindBidirectional(fx_XCoord.getValueFactory().valueProperty());
+        emitter.coordY().bindBidirectional(fx_YCoord.getValueFactory().valueProperty());
+        fx_particleColor.setOnAction(e -> emitter.setParticleColor(fx_particleColor.getValue()));
     }
 
     private void bindSliderToSpinner(Slider slider, Spinner spinner){
