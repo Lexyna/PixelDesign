@@ -64,6 +64,8 @@ public class MainController implements Initializable {
         ParticleSystem particleSystem = new ParticleSystem(new Renderer(fx_canvas), new PixelRenderer(fx_canvas), new PixelMap(64,64, Color.web("666666", 1.0)));
         ParticleSystemManager.getInstance().addSystem(particleSystem);
 
+        fx_emitterĹist.setItems(ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getEmitters());
+
     }
 
     private void addMenuListener(MenuItem fx_newEmitter, MenuItem fx_deleteEmitter){

@@ -8,8 +8,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 
 /**
  * the main source of particle effect, store and calculated all data relevant for
@@ -21,19 +20,19 @@ public class Emitter implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private AnchorPane propertyNode;
+    private transient AnchorPane propertyNode;
 
     //Emitter properties
 
-    private DoubleProperty coordX = new SimpleDoubleProperty(0), coordY = new SimpleDoubleProperty(0);
+    private int coordX = 0, coordY = 0;
 
-    private DoubleProperty spawnRateMin = new SimpleDoubleProperty(0), spawnRateMax = new SimpleDoubleProperty(0);
-    private DoubleProperty spawnRadiusMin = new SimpleDoubleProperty(0), spawnRadiusMax = new SimpleDoubleProperty(0);
-    private DoubleProperty spawnIntervallMin = new SimpleDoubleProperty(0), spawnIntervallMax = new SimpleDoubleProperty(0);
+    private int spawnRateMin = 0, spawnRateMax = 0;
+    private int spawnRadiusMin = 0, spawnRadiusMax = 0;
+    private int spawnIntervallMin = 0, spawnIntervallMax = 0;
 
     //Particle Properties
 
-    private Color particleColor;
+    private transient Color particleColor;
 
     public Emitter(){}
 
@@ -49,7 +48,7 @@ public class Emitter implements Serializable {
         }
     }
 
-    public void setProperty(ScrollPane propertyPane){
+   public void setProperty(ScrollPane propertyPane){
         propertyPane.setContent(propertyNode);
         propertyNode.prefWidthProperty().bind(propertyPane.widthProperty());
     }
@@ -62,41 +61,40 @@ public class Emitter implements Serializable {
         return name;
     }
 
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public void setSpawnRateMin(int spawnRateMin) {
+        this.spawnRateMin = spawnRateMin;
+    }
+
+    public void setSpawnRateMax(int spawnRateMax) {
+        this.spawnRateMax = spawnRateMax;
+    }
+
+    public void setSpawnRadiusMin(int spawnRadiusMin) {
+        this.spawnRadiusMin = spawnRadiusMin;
+    }
+
+    public void setSpawnRadiusMax(int spawnRadiusMax) {
+        this.spawnRadiusMax = spawnRadiusMax;
+    }
+
+    public void setSpawnIntervallMin(int spawnIntervallMin) {
+        this.spawnIntervallMin = spawnIntervallMin;
+    }
+
+    public void setSpawnIntervallMax(int spawnIntervallMax) {
+        this.spawnIntervallMax = spawnIntervallMax;
+    }
+
     public void setParticleColor(Color color){
         this.particleColor = color;
-    }
-
-    public DoubleProperty coordX(){
-        return coordX;
-    }
-
-    public DoubleProperty coordY(){
-        return coordY;
-    }
-
-    public DoubleProperty spawnRateMinProperty() {
-        return spawnRateMin;
-    }
-
-    public DoubleProperty spawnRateMaxProperty() {
-        return spawnRateMax;
-    }
-
-    public DoubleProperty spawnRadiusMinProperty() {
-        return spawnRadiusMin;
-    }
-
-    public DoubleProperty spawnRadiusMaxProperty() {
-        return spawnRadiusMax;
-    }
-
-
-    public DoubleProperty spawnIntervallMinProperty() {
-        return spawnIntervallMin;
-    }
-
-    public DoubleProperty spawnIntervallMaxProperty() {
-        return spawnIntervallMax;
     }
 
     @Override

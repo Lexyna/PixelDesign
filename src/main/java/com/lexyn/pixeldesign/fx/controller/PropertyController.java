@@ -64,14 +64,14 @@ public class PropertyController implements Initializable {
     }
 
     public void bindParamsToEmitter(Emitter emitter){
-        emitter.spawnRateMinProperty().bindBidirectional(fx_spawnRateMin.getValueFactory().valueProperty());
-        emitter.spawnRateMaxProperty().bindBidirectional(fx_spawnRateMax.getValueFactory().valueProperty());
-        emitter.spawnRadiusMinProperty().bindBidirectional(fx_spawnRadiusMin.getValueFactory().valueProperty());
-        emitter.spawnRadiusMaxProperty().bindBidirectional(fx_spawnRadiusMax.getValueFactory().valueProperty());
-        emitter.spawnIntervallMinProperty().bindBidirectional(fx_spawnIntervallMin.getValueFactory().valueProperty());
-        emitter.spawnIntervallMaxProperty().bindBidirectional(fx_spawnIntervallMax.getValueFactory().valueProperty());
-        emitter.coordX().bindBidirectional(fx_XCoord.getValueFactory().valueProperty());
-        emitter.coordY().bindBidirectional(fx_YCoord.getValueFactory().valueProperty());
+        fx_spawnRateMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRateMin((int) newVal);});
+        fx_spawnRateMax.valueProperty().addListener((obs, oldVal, bnewVal) -> {emitter.setSpawnRateMax((int) bnewVal);});
+        fx_spawnRadiusMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMin((int) newVal);});
+        fx_spawnRadiusMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMax((int) newVal);});
+        fx_spawnIntervallMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMin((int) newVal);});
+        fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax((int) newVal);});
+        fx_XCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordX((int) newVal);});
+        fx_YCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordY((int) newVal);});
         fx_particleColor.setOnAction(e -> emitter.setParticleColor(fx_particleColor.getValue()));
     }
 

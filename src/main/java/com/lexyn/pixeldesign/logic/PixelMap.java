@@ -1,5 +1,8 @@
 package com.lexyn.pixeldesign.logic;
 
+import com.lexyn.pixeldesign.logic.emitter.Emitter;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
 
 /**
@@ -11,12 +14,14 @@ public class PixelMap {
     private int mapWidth, mapHeight;
     private Color backgroundColor;
 
+    private ObservableList<Emitter> emitters;
+
     public PixelMap(int mapWidth, int mapHeight, Color color){
         this.mapWidth = mapWidth;
         this.mapHeight = mapHeight;
         this.backgroundColor = color;
+        emitters = FXCollections.observableArrayList();
     }
-
 
     public int getMapWidth(){
         return mapWidth;
@@ -29,5 +34,7 @@ public class PixelMap {
     public Color getBackgroundColor() {
         return backgroundColor;
     }
+
+    public ObservableList getEmitters(){ return emitters;}
 
 }
