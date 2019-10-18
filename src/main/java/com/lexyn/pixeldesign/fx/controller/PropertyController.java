@@ -8,6 +8,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -63,10 +64,22 @@ public class PropertyController implements Initializable {
         bindSliderToSpinner(fx_spawnIntervallMaxS, fx_spawnIntervallMax);
     }
 
+    public void setParams(int x, int y, double radMin, double radMax, double rateMin, double rateMax, double interMin, double interMax, Color color){
+        fx_XCoord.getValueFactory().setValue(x);
+        fx_YCoord.getValueFactory().setValue(y);
+        fx_spawnRadiusMin.getValueFactory().setValue(radMin);
+        fx_spawnRadiusMax.getValueFactory().setValue(radMax);
+        fx_spawnRateMin.getValueFactory().setValue(rateMin);
+        fx_spawnRateMax.getValueFactory().setValue(rateMax);
+        fx_spawnIntervallMin.getValueFactory().setValue(interMin);
+        fx_spawnIntervallMax.getValueFactory().setValue(interMax);
+        fx_particleColor.setValue(color);
+    }
+
     public void bindParamsToEmitter(Emitter emitter){
         fx_spawnRadiusMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMin(newVal.intValue());});
         fx_spawnRadiusMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRadiusMax(newVal.intValue());});
-        fx_spawnRateMin.valueProperty().addListener((obs, oldVal, newVal) -> emitter.setSpawnRateMin(newVal.intValue()));
+        fx_spawnRateMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRateMin(newVal.intValue());});
         fx_spawnRateMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnRateMax(newVal.intValue());});
         fx_spawnIntervallMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMin(newVal.intValue());});
         fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax(newVal.intValue());});

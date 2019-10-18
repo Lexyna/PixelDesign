@@ -21,7 +21,7 @@ public class Emitter implements Serializable {
 
     private String name;
     // TODO: Serialize anchorPane?
-    private transient AnchorPane propertyNode;
+    //private transient AnchorPane propertyNode;
 
     //Emitter properties
 
@@ -39,19 +39,26 @@ public class Emitter implements Serializable {
 
     public Emitter(String name){
         this.name = name;
-        try {
-            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
-            propertyNode = loader.load();
-            PropertyController pc = loader.getController();
-            pc.bindParamsToEmitter(this);
-        }catch (IOException ex){
 
-        }
     }
 
    public void setProperty(ScrollPane propertyPane){
-        propertyPane.setContent(propertyNode);
-        propertyNode.prefWidthProperty().bind(propertyPane.widthProperty());
+        System.out.println("set prop");
+       try {
+           FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
+           AnchorPane propertyNode = loader.load();
+           PropertyController pc = loader.getController();
+           pc.bindParamsToEmitter(this);
+           pc.setParams(coordX, coordY,
+                   spawnRadiusMin, spawnRadiusMax,
+                   spawnRateMin, spawnRateMax,
+                   spawnIntervallMin, spawnIntervallMax,
+                   particleColor);
+           propertyPane.setContent(propertyNode);
+           propertyNode.prefWidthProperty().bind(propertyPane.widthProperty());
+       }catch (IOException ex){
+
+       }
     }
 
     public void setName(String name) {
