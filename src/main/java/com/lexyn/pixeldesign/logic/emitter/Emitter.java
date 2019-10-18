@@ -39,7 +39,6 @@ public class Emitter implements Serializable {
     }
 
    public void setProperty(ScrollPane propertyPane){
-        System.out.println("set prop");
        try {
            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
            AnchorPane propertyNode = loader.load();
