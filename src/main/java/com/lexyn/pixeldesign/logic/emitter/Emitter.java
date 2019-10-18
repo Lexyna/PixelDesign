@@ -1,8 +1,6 @@
 package com.lexyn.pixeldesign.logic.emitter;
 
 import com.lexyn.pixeldesign.fx.controller.PropertyController;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -20,8 +18,6 @@ public class Emitter implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    // TODO: Serialize anchorPane?
-    //private transient AnchorPane propertyNode;
 
     //Emitter properties
 
