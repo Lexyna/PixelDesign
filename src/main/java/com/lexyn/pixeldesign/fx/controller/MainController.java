@@ -82,6 +82,11 @@ public class MainController implements Initializable {
         });
     }
 
+    /**
+     * Add mouse listener to highligth hovered Pixel,
+     * save mouse Coord as pixel Coord and redraw canvas when moving
+     * @param fx_canvas
+     */
     private void addCanvasListener(Canvas fx_canvas){
         fx_canvas.setOnMouseMoved((evt)->{
             PixelCoordinate cord = TransformationMatrix.getInstance().converToPixelCord(evt.getX(), evt.getY());

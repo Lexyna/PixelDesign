@@ -86,11 +86,15 @@ public class PropertyController implements Initializable {
         fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax(newVal.intValue());});
         fx_XCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordX(newVal);});
         fx_YCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordY(newVal);});
-        fx_particleColor.setOnAction(e -> emitter.setParticleColor(new PixelColor(
-                (int) fx_particleColor.getValue().getRed() * 255,
-                (int) fx_particleColor.getValue().getGreen() * 255,
-                (int) fx_particleColor.getValue().getBlue() * 255,
-                fx_particleColor.getOpacity())));
+        fx_particleColor.setOnAction(e -> {
+                    Color c = fx_particleColor.getValue();
+                    emitter.setParticleColor(new PixelColor(
+                            (int)(c.getRed() * 255),
+                            (int)(c.getGreen() * 255),
+                            (int)(c.getBlue() * 255),
+                            c.getOpacity()));
+        }
+        );
     }
 
     private void bindSliderToSpinner(Slider slider, Spinner spinner){
