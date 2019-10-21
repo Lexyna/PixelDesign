@@ -2,7 +2,6 @@ package com.lexyn.pixeldesign.logic.emitter;
 
 import com.lexyn.pixeldesign.color.PixelColor;
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
-import com.lexyn.pixeldesign.logic.ParticleSystem;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 
 /***
@@ -15,25 +14,30 @@ public class Particle {
     private PixelColor color;
 
     private int lifetime;
-    private int speedX, speedY;
+    private int speed;
 
-    public Particle(int x, int y, PixelColor color){
+    public Particle(int x, int y, int lifetime, int speed, PixelColor color){
         this.x = x;
         this.y = y;
+        this.lifetime = lifetime;
+        this.speed = speed;
         this.color = color;
     }
 
     public void tick(){
 
-        this.lifetime -= 1;
-
-        this.x += this.speedX;
-        this.y += this.speedY;
+        lifetime -= 1;
+        x += speed;
+        y += speed;
 
     }
 
     public void render(){
         ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixel(new PixelCoordinate(x,y ), color);
+    }
+
+    public int getLifetime(){
+        return lifetime;
     }
 
 }

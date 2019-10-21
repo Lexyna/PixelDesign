@@ -33,8 +33,11 @@ public class ParticleSystem {
         animationLoop.setCycleCount(Timeline.INDEFINITE);
 
         KeyFrame kf = new KeyFrame(
-                Duration.seconds(1.00),
-                event -> System.out.println("tick" + name)
+                Duration.seconds(0.17),
+                event -> {
+                renderer.redraw();
+                pixelMap.tick();
+                }
         );
 
         animationLoop.getKeyFrames().add(kf);

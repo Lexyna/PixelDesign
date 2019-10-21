@@ -2,6 +2,7 @@ package com.lexyn.pixeldesign.logic.emitter;
 
 import com.lexyn.pixeldesign.color.PixelColor;
 import com.lexyn.pixeldesign.fx.controller.PropertyController;
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
@@ -21,24 +22,73 @@ public class Emitter implements Serializable {
 
     //Emitter properties
 
-    private int coordX = 0, coordY = 0;
+    private int coordX, coordY;
 
-    private int spawnRateMin = 0, spawnRateMax = 0;
-    private int spawnRadiusMin = 0, spawnRadiusMax = 0;
-    private int spawnIntervallMin = 0, spawnIntervallMax = 0;
+    private int spawnRateMin = 1, spawnRateMax = 1;
+    private int spawnRadiusMin = 1, spawnRadiusMax = 1;
+    private int spawnIntervallMin = 1, spawnIntervallMax = 1, spawnTick = 1;
 
     //Particle Properties
 
     private PixelColor particleColor = new PixelColor(255,255,255, 1);
 
-    public Emitter(){}
+    private int pSpeedMin = 1, pSpeedMax = 4;
+    private int pLifetimeMin = 1, pLifetimeMax = 5;
+
+    public Emitter(){
+    }
 
     public Emitter(String name){
         this.name = name;
+        coordY = ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapHeight() / 2;
+        coordX = ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().getMapWidth() / 2;
+    }
+
+    /**
+     *  calculate variable parameters in bound create particles corresponding
+     */
+    public void tick(){
+
+        this.spawnTick -= 1;
+
+        if(spawnTick == 0){
+            spawnTick = (int) Math.floor(spawnIntervallMin + Math.random() * (spawnIntervallMax - spawnIntervallMin));
+            createParticle();
+        }
 
     }
 
-   public void setProperty(ScrollPane propertyPane){
+    /**
+     * Creates a particle with random parameters in bound
+     */
+    private void createParticle(){
+
+        int rate = (int) Math.floor(spawnRateMin + Math.random() * (spawnRateMax - spawnRateMin));
+
+        for(int i = 0; i < rate; i++){
+
+            int posX = createRandomInt(spawnRadiusMin, spawnRadiusMax);
+            int posY = createRandomInt(spawnRadiusMin, spawnRadiusMax);
+
+            int speed = createRandomInt(pSpeedMin, pSpeedMax);
+            int lifetime = createRandomInt(pLifetimeMin, pLifetimeMax);
+
+            posX += this.coordX;
+            posY += this.coordY;
+
+            ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().addParticle(
+                    new Particle(posX, posY, lifetime, speed, particleColor)
+            );
+
+        }
+
+    }
+
+    private int createRandomInt(int min, int max){
+        return (int) Math.floor(min + Math.random() * (max-min));
+    }
+
+    public void setProperty(ScrollPane propertyPane){
        try {
            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
            AnchorPane propertyNode = loader.load();
