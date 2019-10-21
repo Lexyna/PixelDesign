@@ -16,19 +16,33 @@ public class Particle {
     private int lifetime;
     private int speed;
 
+    private boolean invertX = false, invertY = false;
+
     public Particle(int x, int y, int lifetime, int speed, PixelColor color){
         this.x = x;
         this.y = y;
         this.lifetime = lifetime;
         this.speed = speed;
         this.color = color;
+
+        if(Math.random() > 0.5)
+            invertX = true;
+        if(Math.random() > 0.5)
+            invertY = true;
+
     }
 
     public void tick(){
 
         lifetime -= 1;
+
+       if(invertX && speed > 0 || !invertX && speed < 0)
+            speed *= -1;
         x += speed;
+        if(!invertY && speed < 0 || invertY && speed > 0)
+            speed *= -1;
         y += speed;
+
 
     }
 
