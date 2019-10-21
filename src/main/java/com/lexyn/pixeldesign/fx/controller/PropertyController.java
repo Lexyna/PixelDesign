@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.fx.controller;
 
+import com.lexyn.pixeldesign.color.PixelColor;
 import com.lexyn.pixeldesign.logic.emitter.Emitter;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.fxml.FXML;
@@ -64,7 +65,7 @@ public class PropertyController implements Initializable {
         bindSliderToSpinner(fx_spawnIntervallMaxS, fx_spawnIntervallMax);
     }
 
-    public void setParams(int x, int y, double radMin, double radMax, double rateMin, double rateMax, double interMin, double interMax, Color color){
+    public void setParams(int x, int y, double radMin, double radMax, double rateMin, double rateMax, double interMin, double interMax, PixelColor color){
         fx_XCoord.getValueFactory().setValue(x);
         fx_YCoord.getValueFactory().setValue(y);
         fx_spawnRadiusMin.getValueFactory().setValue(radMin);
@@ -73,7 +74,7 @@ public class PropertyController implements Initializable {
         fx_spawnRateMax.getValueFactory().setValue(rateMax);
         fx_spawnIntervallMin.getValueFactory().setValue(interMin);
         fx_spawnIntervallMax.getValueFactory().setValue(interMax);
-        fx_particleColor.setValue(color);
+        fx_particleColor.setValue(Color.rgb(color.getRed(), color.getGreen(), color.getBlue(), color.getOpacity()));
     }
 
     public void bindParamsToEmitter(Emitter emitter){
@@ -85,7 +86,11 @@ public class PropertyController implements Initializable {
         fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax(newVal.intValue());});
         fx_XCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordX(newVal);});
         fx_YCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordY(newVal);});
-        fx_particleColor.setOnAction(e -> emitter.setParticleColor(fx_particleColor.getValue()));
+        fx_particleColor.setOnAction(e -> emitter.setParticleColor(new PixelColor(
+                (int) fx_particleColor.getValue().getRed() * 255,
+                (int) fx_particleColor.getValue().getGreen() * 255,
+                (int) fx_particleColor.getValue().getBlue() * 255,
+                fx_particleColor.getOpacity())));
     }
 
     private void bindSliderToSpinner(Slider slider, Spinner spinner){

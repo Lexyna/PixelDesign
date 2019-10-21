@@ -1,10 +1,10 @@
 package com.lexyn.pixeldesign.logic.emitter;
 
+import com.lexyn.pixeldesign.color.PixelColor;
 import com.lexyn.pixeldesign.fx.controller.PropertyController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 
 import java.io.*;
 
@@ -29,7 +29,7 @@ public class Emitter implements Serializable {
 
     //Particle Properties
 
-    private transient Color particleColor;
+    private PixelColor particleColor = new PixelColor(255,255,255, 1);
 
     public Emitter(){}
 
@@ -40,6 +40,7 @@ public class Emitter implements Serializable {
 
    public void setProperty(ScrollPane propertyPane){
        try {
+           System.out.println("color: " + particleColor.getRed() + " " + particleColor.getGreen() + " " + particleColor.getBlue());
            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
            AnchorPane propertyNode = loader.load();
            PropertyController pc = loader.getController();
@@ -96,7 +97,7 @@ public class Emitter implements Serializable {
         this.spawnIntervallMax = spawnIntervallMax;
     }
 
-    public void setParticleColor(Color color){
+    public void setParticleColor(PixelColor color){
         this.particleColor = color;
     }
 
@@ -110,6 +111,10 @@ public class Emitter implements Serializable {
 
         Emitter copy = (Emitter) o;
 
-        return this.getName().equals(copy.getName());
+        return (this.getName().equals(copy.getName()) &&
+                this.coordX == copy.coordX && this.coordY == copy.coordY &&
+                this.spawnRadiusMin == copy.spawnRadiusMin && this.spawnRadiusMax == copy.spawnRadiusMax &&
+                this.spawnRateMin == copy.spawnRateMin && this.spawnRateMax == copy.spawnRateMax &&
+                this.spawnIntervallMin == copy.spawnIntervallMin && this.spawnIntervallMax == copy.spawnIntervallMax);
     }
 }
