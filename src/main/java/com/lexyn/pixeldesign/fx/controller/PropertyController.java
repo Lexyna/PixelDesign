@@ -113,6 +113,6 @@ public class PropertyController implements Initializable {
     }
 
     private SpinnerValueFactory createSimplespinner(){
-        return new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0, 1);
+        return new SpinnerValueFactory.DoubleSpinnerValueFactory(1, 100, 1, 1);
     }
 }
