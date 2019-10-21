@@ -2,7 +2,6 @@ package com.lexyn.pixeldesign.render;
 
 import com.lexyn.pixeldesign.color.PixelColor;
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
-import com.lexyn.pixeldesign.logic.emitter.Particle;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
 import javafx.scene.canvas.Canvas;
@@ -25,11 +24,9 @@ public class PixelRenderer {
 
     public void highlightPixel(PixelCoordinate pixel){
 
-        if(!pixel.isValid())
+        if(pixel == null || !pixel.isValid())
             return;
 
-        ParticleSystemManager.getInstance().getActiveSystem().getRenderer().redraw();
-        ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().redraw();
         ctx.setFill(Color.web("#999999"));
         ctx.fillRect(pixel.getX() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
                 pixel.getY() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY(),

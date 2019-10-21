@@ -1,8 +1,8 @@
 package com.lexyn.pixeldesign.logic;
 
+import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.logic.emitter.Emitter;
 import com.lexyn.pixeldesign.logic.emitter.Particle;
-import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
@@ -18,6 +18,8 @@ public class PixelMap {
 
     private int mapWidth, mapHeight;
     private Color backgroundColor;
+
+    private PixelCoordinate mouseCoord;
 
     private ObservableList<Emitter> emitters;
     private ArrayList<Particle> particles;
@@ -56,6 +58,14 @@ public class PixelMap {
     public void redraw(){
         for(Particle p : particles)
             p.render();
+    }
+
+    public void setMouseCoord(PixelCoordinate mouseCoord){
+        this.mouseCoord = mouseCoord;
+    }
+
+    public PixelCoordinate getMouseCoord(){
+        return mouseCoord;
     }
 
     public void addParticle(Particle p){

@@ -37,6 +37,7 @@ public class ParticleSystem {
                 event -> {
                 renderer.redraw();
                 pixelMap.tick();
+                pixelRenderer.highlightPixel(pixelMap.getMouseCoord());
                 }
         );
 

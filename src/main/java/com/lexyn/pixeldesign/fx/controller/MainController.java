@@ -85,6 +85,9 @@ public class MainController implements Initializable {
     private void addCanvasListener(Canvas fx_canvas){
         fx_canvas.setOnMouseMoved((evt)->{
             PixelCoordinate cord = TransformationMatrix.getInstance().converToPixelCord(evt.getX(), evt.getY());
+            ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().setMouseCoord(cord);
+            ParticleSystemManager.getInstance().getActiveSystem().getRenderer().redraw();
+            ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().redraw();
             ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().highlightPixel(cord);
             if(cord.isValid())
                 fx_canvasFrame.setText("Filename + Mouse at " + cord.getX() + "/" + cord.getY());
