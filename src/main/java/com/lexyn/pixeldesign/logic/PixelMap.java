@@ -2,6 +2,7 @@ package com.lexyn.pixeldesign.logic;
 
 import com.lexyn.pixeldesign.logic.emitter.Emitter;
 import com.lexyn.pixeldesign.logic.emitter.Particle;
+import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.paint.Color;
@@ -47,7 +48,14 @@ public class PixelMap {
                 it.remove();
         }
 
+    }
 
+    /**
+     * redraws canvas including particles without ticking
+     */
+    public void redraw(){
+        for(Particle p : particles)
+            p.render();
     }
 
     public void addParticle(Particle p){
