@@ -1,5 +1,6 @@
 package com.lexyn.pixeldesign.render;
 
+import com.lexyn.pixeldesign.color.PixelColor;
 import com.lexyn.pixeldesign.coord.PixelCoordinate;
 import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import com.lexyn.pixeldesign.render.transformation.TransformationMatrix;
@@ -34,12 +35,12 @@ public class PixelRenderer {
                 TransformationMatrix.getInstance().getPixelDistance());
     }
 
-    public void renderPixel(PixelCoordinate pixel, Color color){
+    public void renderPixel(PixelCoordinate pixel, PixelColor color){
 
         if(!pixel.isValid())
             return;
 
-        ctx.setFill(color);
+        ctx.setFill(Color.rgb(color.getRed(), color.getGreen(), color.getBlue(), color.getOpacity()));
         ctx.fillRect(pixel.getX() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartX(),
                 pixel.getY() * TransformationMatrix.getInstance().getPixelDistance() + TransformationMatrix.getInstance().getPixelStartY(),
                 TransformationMatrix.getInstance().getPixelDistance(),

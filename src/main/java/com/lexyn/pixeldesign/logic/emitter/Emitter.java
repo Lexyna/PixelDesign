@@ -40,7 +40,6 @@ public class Emitter implements Serializable {
 
    public void setProperty(ScrollPane propertyPane){
        try {
-           System.out.println("color: " + particleColor.getRed() + " " + particleColor.getGreen() + " " + particleColor.getBlue());
            FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/propertyStage.fxml"));
            AnchorPane propertyNode = loader.load();
            PropertyController pc = loader.getController();
