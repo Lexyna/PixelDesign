@@ -70,6 +70,11 @@ public class Emitter implements Serializable {
             int posX = createRandomInt(spawnRadiusMin, spawnRadiusMax);
             int posY = createRandomInt(spawnRadiusMin, spawnRadiusMax);
 
+            if(Math.random() > 0.5)
+                posX *= -1;
+            if(Math.random() > 0.5)
+                posY *= -1;
+
             int speed = createRandomInt(pSpeedMin, pSpeedMax);
             int lifetime = createRandomInt(pLifetimeMin, pLifetimeMax);
 
