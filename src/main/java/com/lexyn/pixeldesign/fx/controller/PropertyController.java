@@ -37,6 +37,11 @@ public class PropertyController implements Initializable {
     private ColorPicker fx_particleColor;
 
 
+    @FXML
+    private Spinner<Double> fx_pLifetimeMin, fx_pLifetimeMax;
+    @FXML
+    private Slider fx_pLifetimeMinS, fx_pLifetimeMaxS;
+
     public PropertyController(){
 
     }
@@ -63,6 +68,12 @@ public class PropertyController implements Initializable {
 
         bindSliderToSpinner(fx_spawnIntervallMinS, fx_spawnIntervallMin);
         bindSliderToSpinner(fx_spawnIntervallMaxS, fx_spawnIntervallMax);
+
+        fx_pLifetimeMin.setValueFactory(createSimplespinner());
+        fx_pLifetimeMax.setValueFactory(createSimplespinner());
+
+        bindSliderToSpinner(fx_pLifetimeMinS, fx_pLifetimeMin);
+        bindSliderToSpinner(fx_pLifetimeMaxS, fx_pLifetimeMax);
     }
 
     public void setParams(int x, int y, double radMin, double radMax, double rateMin, double rateMax, double interMin, double interMax, PixelColor color){

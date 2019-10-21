@@ -62,5 +62,16 @@
       <Spinner fx:id="fx_spawnRateMax" editable="true" layoutX="142.0" layoutY="241.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
       <Spinner fx:id="fx_spawnIntervallMin" editable="true" layoutX="142.0" layoutY="293.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
       <Spinner fx:id="fx_spawnIntervallMax" editable="true" layoutX="142.0" layoutY="327.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
+      <Label layoutX="10.0" layoutY="430.0" text="Particle Lifetime:">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="16.0" layoutY="457.0" text="min:" />
+      <Label layoutX="14.0" layoutY="491.0" text="max:" />
+      <Spinner fx:id="fx_pLifetimeMin" editable="true" layoutX="142.0" layoutY="452.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
+      <Spinner fx:id="fx_pLifetimeMax" editable="true" layoutX="142.0" layoutY="486.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
+      <Slider fx:id="fx_pLifetimeMinS" layoutX="50.0" layoutY="457.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
+      <Slider fx:id="fx_pLifetimeMaxS" layoutX="50.0" layoutY="491.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
    </children>
 </AnchorPane>
