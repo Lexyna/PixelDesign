@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
@@ -15,8 +16,9 @@
               <MenuItem fx:id="fx_newFile" mnemonicParsing="false" text="New File" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="World">
             <items>
+                  <CheckMenuItem fx:id="fx_pixelGrid" mnemonicParsing="false" text="Render PixelGrid" />
               <MenuItem mnemonicParsing="false" text="Map Size" />
             </items>
           </Menu>

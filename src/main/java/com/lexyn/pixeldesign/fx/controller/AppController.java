@@ -5,6 +5,7 @@ import com.lexyn.pixeldesign.manager.ParticleSystemManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TabPane;
 
@@ -16,8 +17,12 @@ public class AppController implements Initializable {
 
     @FXML
     TabPane fx_tabPane;
+
     @FXML
     MenuItem fx_newFile;
+    @FXML
+    CheckMenuItem fx_pixelGrid;
+
 
     @Override
     public void initialize(URL location, ResourceBundle bundle){
@@ -26,12 +31,15 @@ public class AppController implements Initializable {
 
         createTab();
 
-        fx_tabPane.getSelectionModel().selectedIndexProperty().addListener(e -> ParticleSystemManager.getInstance().changeActiveSystem());
+        fx_tabPane.getSelectionModel().selectedIndexProperty().addListener(e -> {
+            ParticleSystemManager.getInstance().changeActiveSystem();
+            triggerRenderGrid(fx_pixelGrid.isSelected());
+        });
         //The Policy consumes the left click event for the TabPane
         fx_tabPane.setTabDragPolicy(TabPane.TabDragPolicy.REORDER);
 
         fx_newFile.setOnAction(e -> createTab());
-
+        fx_pixelGrid.setOnAction(e -> triggerRenderGrid(fx_pixelGrid.isSelected()));
     }
 
     private void createTab(){
@@ -44,6 +52,10 @@ public class AppController implements Initializable {
         }catch (IOException e){
 
         }
+    }
+
+    private void triggerRenderGrid(boolean render){
+        ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().setRenderGrid(render);
     }
 
 }

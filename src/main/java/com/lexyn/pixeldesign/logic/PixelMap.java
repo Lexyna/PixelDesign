@@ -16,6 +16,8 @@ import java.util.Iterator;
  */
 public class PixelMap {
 
+    private boolean renderGrid = false;
+
     private int mapWidth, mapHeight;
     private Color backgroundColor;
 
@@ -71,6 +73,12 @@ public class PixelMap {
     public void addParticle(Particle p){
         particles.add(p);
     }
+
+    public void setRenderGrid(boolean renderGrid){
+        this.renderGrid = renderGrid;
+    }
+
+    public boolean isRenderGrid(){return renderGrid;}
 
     public int getMapWidth(){
         return mapWidth;

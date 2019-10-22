@@ -22,13 +22,13 @@ public class Renderer {
 
     public void resize(){
         TransformationMatrix.getInstance().calculatePixel(canvas.getWidth(), canvas.getHeight());
-        drawBackground();
-        ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
+        redraw();
     }
 
     public void redraw(){
         drawBackground();
-        ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
+        if(ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().isRenderGrid())
+            ParticleSystemManager.getInstance().getActiveSystem().getPixelRenderer().renderPixelGrid();
     }
 
     public void drawBackground(){
