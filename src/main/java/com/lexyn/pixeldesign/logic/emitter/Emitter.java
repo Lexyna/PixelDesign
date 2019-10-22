@@ -70,23 +70,32 @@ public class Emitter implements Serializable {
             int posX = createRandomInt(spawnRadiusMin, spawnRadiusMax);
             int posY = createRandomInt(spawnRadiusMin, spawnRadiusMax);
 
-            if(Math.random() > 0.5)
-                posX *= -1;
-            if(Math.random() > 0.5)
-                posY *= -1;
+            posX = randomInvert(posX);
+            posY = randomInvert(posY);
 
-            int speed = createRandomInt(pSpeedMin, pSpeedMax);
+            int speedX = createRandomInt(pSpeedMin, pSpeedMax);
+            int speedY = createRandomInt(pSpeedMin, pSpeedMax);
+
+            speedX = randomInvert(speedX);
+            speedY = randomInvert(speedY);
+
             int lifetime = createRandomInt(pLifetimeMin, pLifetimeMax);
 
             posX += this.coordX;
             posY += this.coordY;
 
             ParticleSystemManager.getInstance().getActiveSystem().getPixelMap().addParticle(
-                    new Particle(posX, posY, lifetime, speed, particleColor)
+                    new Particle(posX, posY, lifetime, speedX, speedY, particleColor)
             );
 
         }
 
+    }
+
+    private int randomInvert(int randomInvert){
+        if(Math.random() > 0.5)
+            randomInvert *= -1;
+        return randomInvert;
     }
 
     private int createRandomInt(int min, int max){
