@@ -25,4 +25,23 @@ public class PixelCoordinate {
     public int getY() {
         return y;
     }
+
+    @Override
+
+    public String toString(){
+        return "X:" + x + " Y:" + y;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this)
+            return true;
+
+        if(!(o instanceof PixelCoordinate))
+            return false;
+
+        PixelCoordinate copy = (PixelCoordinate) o;
+        return this.x == copy.x && this.y == copy.y;
+    }
+
 }

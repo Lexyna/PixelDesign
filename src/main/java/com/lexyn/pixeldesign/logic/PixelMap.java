@@ -21,7 +21,7 @@ public class PixelMap {
     private int mapWidth, mapHeight;
     private Color backgroundColor;
 
-    private PixelCoordinate mouseCoord;
+    private PixelCoordinate mouseCoord = new PixelCoordinate(0,0);
 
     private ObservableList<Emitter> emitters;
     private ArrayList<Particle> particles;
@@ -52,14 +52,6 @@ public class PixelMap {
                 it.remove();
         }
 
-    }
-
-    /**
-     * redraws canvas including particles without ticking
-     */
-    public void redraw(){
-        for(Particle p : particles)
-            p.render();
     }
 
     public void setMouseCoord(PixelCoordinate mouseCoord){

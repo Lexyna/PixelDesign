@@ -132,8 +132,7 @@ public class PropertyController implements Initializable {
                             (int)(c.getGreen() * 255),
                             (int)(c.getBlue() * 255),
                             c.getOpacity()));
-        }
-        );
+        });
     }
 
     private void bindSliderToSpinner(Slider slider, Spinner spinner){
