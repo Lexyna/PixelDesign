@@ -36,6 +36,15 @@ public class PropertyController implements Initializable {
     @FXML
     private ColorPicker fx_particleColor;
 
+    @FXML
+    private Spinner<Double> fx_velocityXMin, fx_velocityXMax;
+    @FXML
+    private Slider fx_velocityXMinS, fx_velocityXMaxS;
+    @FXML
+    private Spinner<Double> fx_velocityYMin, fx_velocityYMax;
+    @FXML
+    private Slider fx_velocityYMinS, fx_velocityYMaxS;
+
 
     @FXML
     private Spinner<Double> fx_pLifetimeMin, fx_pLifetimeMax;
@@ -74,6 +83,19 @@ public class PropertyController implements Initializable {
 
         bindSliderToSpinner(fx_pLifetimeMinS, fx_pLifetimeMin);
         bindSliderToSpinner(fx_pLifetimeMaxS, fx_pLifetimeMax);
+
+        fx_velocityXMin.setValueFactory(createSimplespinner());
+        fx_velocityXMax.setValueFactory(createSimplespinner());
+
+        bindSliderToSpinner(fx_velocityXMaxS, fx_velocityXMax);
+        bindSliderToSpinner(fx_velocityXMinS, fx_velocityXMin);
+
+        fx_velocityYMin.setValueFactory(createSimplespinner());
+        fx_velocityYMax.setValueFactory(createSimplespinner());
+
+        bindSliderToSpinner(fx_velocityYMaxS, fx_velocityYMax);
+        bindSliderToSpinner(fx_velocityYMinS, fx_velocityYMin);
+
     }
 
     public void setParams(int x, int y, double radMin, double radMax, double rateMin, double rateMax, double interMin, double interMax, PixelColor color){
@@ -97,6 +119,12 @@ public class PropertyController implements Initializable {
         fx_spawnIntervallMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setSpawnIntervallMax(newVal.intValue());});
         fx_XCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordX(newVal);});
         fx_YCoord.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setCoordY(newVal);});
+        fx_pLifetimeMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setpLifetimeMin(newVal.intValue());});
+        fx_pLifetimeMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setpLifetimeMax(newVal.intValue());});
+        fx_velocityXMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setpVelocityXMin(newVal.intValue());});
+        fx_velocityXMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setpVelocityXMax(newVal.intValue());});
+        fx_velocityYMin.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setpVelocityYMin(newVal.intValue());});
+        fx_velocityYMax.valueProperty().addListener((obs, oldVal, newVal) -> {emitter.setpVelocityYMax(newVal.intValue());});
         fx_particleColor.setOnAction(e -> {
                     Color c = fx_particleColor.getValue();
                     emitter.setParticleColor(new PixelColor(
@@ -110,6 +138,7 @@ public class PropertyController implements Initializable {
 
     private void bindSliderToSpinner(Slider slider, Spinner spinner){
         slider.valueProperty().bindBidirectional(spinner.getValueFactory().valueProperty());
+        slider.valueProperty().addListener((obs, oldVal, newVal) -> slider.setValue(newVal.intValue()));
     }
 
     private SpinnerValueFactory createSimplespinner(){

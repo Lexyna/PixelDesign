@@ -32,8 +32,10 @@ public class Emitter implements Serializable {
 
     private PixelColor particleColor = new PixelColor(255,255,255, 1);
 
-    private int pSpeedMin = 1, pSpeedMax = 4;
-    private int pLifetimeMin = 1, pLifetimeMax = 5;
+    private int pVelocityXMin = 1, pVelocityXMax = 1;
+    private int pVelocityYMin = 1, pVelocityYMax = 1;
+
+    private int pLifetimeMin = 1, pLifetimeMax = 1;
 
     public Emitter(){
     }
@@ -73,8 +75,8 @@ public class Emitter implements Serializable {
             posX = randomInvert(posX);
             posY = randomInvert(posY);
 
-            int speedX = createRandomInt(pSpeedMin, pSpeedMax);
-            int speedY = createRandomInt(pSpeedMin, pSpeedMax);
+            int speedX = createRandomInt(pVelocityXMin, pVelocityXMax);
+            int speedY = createRandomInt(pVelocityYMin, pVelocityYMax);
 
             speedX = randomInvert(speedX);
             speedY = randomInvert(speedY);
@@ -158,6 +160,30 @@ public class Emitter implements Serializable {
 
     public void setSpawnIntervallMax(int spawnIntervallMax) {
         this.spawnIntervallMax = spawnIntervallMax;
+    }
+
+    public void setpVelocityXMin(int pVelocityXMin) {
+        this.pVelocityXMin = pVelocityXMin;
+    }
+
+    public void setpVelocityXMax(int pVelocityXMax) {
+        this.pVelocityXMax = pVelocityXMax;
+    }
+
+    public void setpVelocityYMin(int pVelocityYMin) {
+        this.pVelocityYMin = pVelocityYMin;
+    }
+
+    public void setpVelocityYMax(int pVelocityYMax) {
+        this.pVelocityYMax = pVelocityYMax;
+    }
+
+    public void setpLifetimeMin(int pLifetimeMin) {
+        this.pLifetimeMin = pLifetimeMin;
+    }
+
+    public void setpLifetimeMax(int pLifetimeMax) {
+        this.pLifetimeMax = pLifetimeMax;
     }
 
     public void setParticleColor(PixelColor color){

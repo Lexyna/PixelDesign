@@ -1,77 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="755.0" prefWidth="211.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexyn.pixeldesign.fx.controller.PropertyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="238.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lexyn.pixeldesign.fx.controller.PropertyController">
    <children>
-      <Label layoutX="10.0" layoutY="14.0" text="Emitter properties:">
-         <font>
-            <Font size="15.0" />
-         </font></Label>
-      <Label layoutX="14.0" layoutY="43.0" text="X:" />
-      <Label layoutX="115.0" layoutY="43.0" text="Y:" />
-      <CheckBox layoutX="14.0" layoutY="78.0" mnemonicParsing="false" text="Visible" />
-      <Label layoutX="8.0" layoutY="105.0" text="Spawn radius:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Slider fx:id="fx_spawnRadiusMinS" layoutX="51.0" layoutY="132.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
-      <Slider fx:id="fx_spawnRadiusMaxS" layoutX="50.0" layoutY="163.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
-      <Label layoutX="16.0" layoutY="132.0" text="min:" />
-      <Label layoutX="14.0" layoutY="163.0" text="max:" />
-      <Label layoutX="6.0" layoutY="184.0" text="Spawn rate:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="16.0" layoutY="215.0" text="min:" />
-      <Slider fx:id="fx_spawnRateMinS" layoutX="50.0" layoutY="215.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
-      <Label layoutX="14.0" layoutY="246.0" text="max:" />
-      <Slider fx:id="fx_spawnRateMaxS" layoutX="50.0" layoutY="246.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
-      <Label layoutX="10.0" layoutY="267.0" text="spwan intervall:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="14.0" layoutY="298.0" text="min:" />
-      <Slider fx:id="fx_spawnIntervallMinS" layoutX="51.0" layoutY="298.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
-      <Label layoutX="14.0" layoutY="332.0" text="max:" />
-      <Slider fx:id="fx_spawnIntervallMaxS" layoutX="50.0" layoutY="332.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
-      <CheckBox layoutX="87.0" layoutY="78.0" mnemonicParsing="false" text="Attractor" />
-      <Separator layoutY="359.0" prefHeight="0.0" prefWidth="200.0" />
-      <Label layoutX="11.0" layoutY="370.0" text="Particle properties:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <ColorPicker fx:id="fx_particleColor" layoutX="62.0" layoutY="397.0" prefHeight="26.0" prefWidth="100.0" />
-      <Label layoutX="13.0" layoutY="402.0" text="Color:" />
-      <Spinner fx:id="fx_XCoord" editable="true" layoutX="35.0" layoutY="38.0" prefHeight="26.0" prefWidth="67.0" />
-      <Spinner fx:id="fx_YCoord" editable="true" layoutX="136.0" layoutY="38.0" prefHeight="26.0" prefWidth="67.0" />
-      <Spinner fx:id="fx_spawnRadiusMin" editable="true" layoutX="143.0" layoutY="127.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="14.0" />
-      <Spinner fx:id="fx_spawnRadiusMax" editable="true" layoutX="143.0" layoutY="158.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="14.0" />
-      <Spinner fx:id="fx_spawnRateMin" editable="true" layoutX="142.0" layoutY="210.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
-      <Spinner fx:id="fx_spawnRateMax" editable="true" layoutX="142.0" layoutY="241.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
-      <Spinner fx:id="fx_spawnIntervallMin" editable="true" layoutX="142.0" layoutY="293.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
-      <Spinner fx:id="fx_spawnIntervallMax" editable="true" layoutX="142.0" layoutY="327.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
-      <Label layoutX="10.0" layoutY="430.0" text="Particle Lifetime:">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Label layoutX="16.0" layoutY="457.0" text="min:" />
-      <Label layoutX="14.0" layoutY="491.0" text="max:" />
-      <Spinner fx:id="fx_pLifetimeMin" editable="true" layoutX="142.0" layoutY="452.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
-      <Spinner fx:id="fx_pLifetimeMax" editable="true" layoutX="142.0" layoutY="486.0" prefHeight="26.0" prefWidth="54.0" AnchorPane.rightAnchor="15.0" />
-      <Slider fx:id="fx_pLifetimeMinS" layoutX="50.0" layoutY="457.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
-      <Slider fx:id="fx_pLifetimeMaxS" layoutX="50.0" layoutY="491.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="79.0" />
+      <Accordion AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <panes>
+            <TitledPane prefHeight="350.0" prefWidth="238.0" text="Emitter properties">
+               <content>
+                  <AnchorPane prefHeight="328.0" prefWidth="236.0">
+                     <children>
+                        <Spinner fx:id="fx_XCoord" editable="true" layoutX="24.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" />
+                        <Label layoutX="10.0" layoutY="15.0" text="X:" />
+                        <Label layoutX="105.0" layoutY="15.0" text="Y:" />
+                        <Spinner fx:id="fx_YCoord" editable="true" layoutX="125.0" layoutY="10.0" prefHeight="26.0" prefWidth="67.0" />
+                        <CheckBox layoutX="24.0" layoutY="43.0" mnemonicParsing="false" text="Visible" />
+                        <CheckBox layoutX="125.0" layoutY="43.0" mnemonicParsing="false" text="Attractor" />
+                        <Label layoutX="5.0" layoutY="69.0" text="Spawn radius:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="13.0" layoutY="93.0" text="max:" />
+                        <Slider fx:id="fx_spawnRadiusMaxS" blockIncrement="1.0" layoutX="57.0" layoutY="93.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_spawnRadiusMax" editable="true" layoutX="139.0" layoutY="88.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="15.0" layoutY="125.0" text="min:" />
+                        <Slider fx:id="fx_spawnRadiusMinS" layoutX="57.0" layoutY="125.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_spawnRadiusMin" editable="true" layoutX="139.0" layoutY="120.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="5.0" layoutY="151.0" text="Rate over Time">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="10.0" layoutY="181.0" text="max:" />
+                        <Slider fx:id="fx_spawnRateMaxS" layoutX="58.0" layoutY="181.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_spawnRateMax" editable="true" layoutX="139.0" layoutY="176.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="8.0" layoutY="211.0" text="min:" />
+                        <Slider fx:id="fx_spawnRateMinS" layoutX="57.0" layoutY="211.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_spawnRateMin" editable="true" layoutX="139.0" layoutY="206.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="5.0" layoutY="240.0" text="Delay:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="8.0" layoutY="271.0" text="max:" />
+                        <Slider fx:id="fx_spawnIntervallMaxS" layoutX="58.0" layoutY="271.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_spawnIntervallMax" editable="true" layoutX="140.0" layoutY="266.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="8.0" layoutY="300.0" text="min:" />
+                        <Slider fx:id="fx_spawnIntervallMinS" layoutX="57.0" layoutY="300.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_spawnIntervallMin" editable="true" layoutX="140.0" layoutY="295.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+            <TitledPane prefHeight="345.0" prefWidth="238.0" text="Particle properties">
+               <content>
+                  <AnchorPane prefHeight="210.0" prefWidth="236.0">
+                     <children>
+                        <Label layoutX="6.0" layoutY="14.0" text="Color:" />
+                        <ColorPicker fx:id="fx_particleColor" layoutX="68.0" layoutY="9.0" prefHeight="26.0" prefWidth="100.0" />
+                        <Label layoutX="2.0" layoutY="49.0" text="Lifetime:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="6.0" layoutY="77.0" text="max:" />
+                        <Label layoutX="8.0" layoutY="107.0" text="min:" />
+                        <Slider fx:id="fx_pLifetimeMaxS" layoutX="54.0" layoutY="79.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Slider fx:id="fx_pLifetimeMinS" layoutX="54.0" layoutY="107.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_pLifetimeMax" editable="true" layoutX="141.0" layoutY="72.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Spinner fx:id="fx_pLifetimeMin" editable="true" layoutX="141.0" layoutY="102.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="6.0" layoutY="136.0" text="VelocityX:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="9.0" layoutY="161.0" text="max:" />
+                        <Slider fx:id="fx_velocityXMaxS" layoutX="49.0" layoutY="161.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_velocityXMax" editable="true" layoutX="141.0" layoutY="156.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="11.0" layoutY="193.0" text="min:" />
+                        <Slider fx:id="fx_velocityXMinS" layoutX="49.0" layoutY="193.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_velocityXMin" editable="true" layoutX="141.0" layoutY="188.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="8.0" layoutY="220.0" text="VelocityY:">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="11.0" layoutY="245.0" text="max:" />
+                        <Slider fx:id="fx_velocityYMaxS" layoutX="51.0" layoutY="245.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_velocityYMax" editable="true" layoutX="143.0" layoutY="240.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                        <Label layoutX="13.0" layoutY="277.0" text="min:" />
+                        <Slider fx:id="fx_velocityYMinS" layoutX="51.0" layoutY="277.0" min="1.0" prefHeight="16.0" prefWidth="82.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="97.0" />
+                        <Spinner fx:id="fx_velocityYMin" editable="true" layoutX="143.0" layoutY="272.0" prefHeight="26.0" prefWidth="63.0" AnchorPane.rightAnchor="34.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </TitledPane>
+         </panes>
+      </Accordion>
    </children>
 </AnchorPane>
