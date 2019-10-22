@@ -21,7 +21,7 @@ public class PixelMap {
     private int mapWidth, mapHeight;
     private Color backgroundColor;
 
-    private PixelCoordinate mouseCoord = new PixelCoordinate(0,0);
+    private PixelCoordinate mouseCoord = new PixelCoordinate(-1,-1);
 
     private ObservableList<Emitter> emitters;
     private ArrayList<Particle> particles;
